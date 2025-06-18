@@ -37,7 +37,7 @@ bunx expo prebuild
 bunx expo run:android -d
 ```
 
-Install template dependencies
+Install template dependencies in AI Chat.
 
 ```bash
 bunx expo install @expo-google-fonts/outfit
@@ -67,4 +67,25 @@ bunx expo install react-native-navigation-bar-color
 bunx expo install react-native-svg
 bunx expo install tailwind-merge
 bunx expo install victory-native
+```
+
+Copy template components
+
+- Copy folders and tailwind configuration
+
+  - app/\_layout.tsx
+  - app/[...404].tsx
+  - assets/
+  - components/
+  - contexts/
+  - hooks/
+  - lib/
+  - screens/
+  - utils/
+  - tailwind.config.js
+
+- Fix errors in AI Chat.
+
+```bash
+bunx tsc --noEmit
 ```
