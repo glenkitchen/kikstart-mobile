@@ -1,12 +1,12 @@
-import React, { useState, useRef } from 'react';
-import { Pressable, View, Text } from 'react-native';
-import Icon from './Icon';
-import { Button } from './Button';
-import { useThemeColors } from '@/app/contexts/ThemeColors';
-import ActionSheetThemed from './ActionSheetThemed';
-import { ActionSheetRef } from 'react-native-actions-sheet';
-import ThemedText from './ThemedText';
-import { router } from 'expo-router';
+import { router } from "expo-router";
+import React, { useRef, useState } from "react";
+import { Pressable, View } from "react-native";
+import { ActionSheetRef } from "react-native-actions-sheet";
+import { useThemeColors } from "../contexts/ThemeColors";
+import ActionSheetThemed from "./ActionSheetThemed";
+import { Button } from "./Button";
+import Icon from "./Icon";
+import ThemedText from "./ThemedText";
 
 interface FavoriteProps {
   initialState?: boolean;
@@ -20,8 +20,8 @@ interface FavoriteProps {
 const Favorite: React.FC<FavoriteProps> = ({
   initialState = false,
   size = 24,
-  className = '',
-  productName = 'Product',
+  className = "",
+  productName = "Product",
   onToggle,
   isWhite = false,
 }) => {
@@ -42,7 +42,7 @@ const Favorite: React.FC<FavoriteProps> = ({
   const handleViewFavorites = () => {
     actionSheetRef.current?.hide();
     // Navigate to favorites screen
-    router.push('/(drawer)/(tabs)/favorites');
+    router.push("/(drawer)/(tabs)/favorites");
   };
 
   return (
@@ -52,38 +52,34 @@ const Favorite: React.FC<FavoriteProps> = ({
           <Icon
             name="Heart"
             size={size}
-            fill={isFavorite ? 'white' : 'none'}
-            color={isFavorite ? 'white' : 'white'}
+            fill={isFavorite ? "white" : "none"}
+            color={isFavorite ? "white" : "white"}
             strokeWidth={1.8}
           />
         ) : (
           <Icon
             name="Heart"
             size={size}
-            fill={isFavorite ? colors.icon : 'none'}
+            fill={isFavorite ? colors.icon : "none"}
             color={isFavorite ? colors.icon : colors.icon}
             strokeWidth={1.8}
           />
         )}
       </Pressable>
 
-      <ActionSheetThemed
-        ref={actionSheetRef}
-        gestureEnabled
-      >
+      <ActionSheetThemed ref={actionSheetRef} gestureEnabled>
         <View className="p-4 pb-6">
-          <ThemedText className="text-lg font-bold mt-4 mb-1 text-left">
-            {isFavorite ? 'Added to Favorites' : 'Removed from Favorites'}
+          <ThemedText className="mb-1 mt-4 text-left text-lg font-bold">
+            {isFavorite ? "Added to Favorites" : "Removed from Favorites"}
           </ThemedText>
 
-          <ThemedText className="text-left mb-6">
+          <ThemedText className="mb-6 text-left">
             {isFavorite
               ? `${productName} has been added to your favorites.`
-              : `${productName} has been removed from your favorites.`
-            }
+              : `${productName} has been removed from your favorites.`}
           </ThemedText>
 
-          <View className="flex-row w-full justify-center">
+          <View className="w-full flex-row justify-center">
             {isFavorite && (
               <Button
                 title="View Favorites"
@@ -105,4 +101,4 @@ const Favorite: React.FC<FavoriteProps> = ({
   );
 };
 
-export default Favorite; 
+export default Favorite;

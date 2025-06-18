@@ -85,6 +85,11 @@ Copy template components
   - tailwind.config.js
 
 - Fix errors in AI Chat.
+  - Navigation/Link Type Errors (expo-router)
+  - IconName Type Errors
+  - Section Import Errors
+  - NativeWind v4 Migration (Usage of deprecated APIs like styled and NativeWindStyleSheet from nativewind v4+.)
+  - Other Prop Type Mismatches
 
 ```bash
 bunx tsc --noEmit

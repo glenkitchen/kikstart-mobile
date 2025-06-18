@@ -1,9 +1,9 @@
-import { useThemeColors } from 'app/contexts/ThemeColors';
-import { TabTriggerSlotProps } from 'expo-router/ui';
-import { ComponentProps, forwardRef, useEffect, useState, ReactNode } from 'react';
-import { Text, Pressable, View, Animated } from 'react-native';
-import Icon, { IconName } from '@/components/Icon';
-import ThemedText from './ThemedText';
+import Icon, { IconName } from "@/components/Icon";
+import { TabTriggerSlotProps } from "expo-router/ui";
+import { forwardRef, ReactNode, useEffect, useState } from "react";
+import { Animated, Pressable, View } from "react-native";
+import { useThemeColors } from "../contexts/ThemeColors";
+import ThemedText from "./ThemedText";
 
 export type TabButtonProps = TabTriggerSlotProps & {
   icon?: IconName;
@@ -13,12 +13,26 @@ export type TabButtonProps = TabTriggerSlotProps & {
 };
 
 export const TabButton = forwardRef<View, TabButtonProps>(
-  ({ icon, children, isFocused, onPress, customContent, labelAnimated = true, hasBadge = false, ...props }, ref) => {
+  (
+    {
+      icon,
+      children,
+      isFocused,
+      onPress,
+      customContent,
+      labelAnimated = true,
+      hasBadge = false,
+      ...props
+    },
+    ref,
+  ) => {
     const colors = useThemeColors();
 
     // Use Animated Values to control opacity and translateY
     const [labelOpacity] = useState(new Animated.Value(isFocused ? 1 : 0));
-    const [labelMarginBottom] = useState(new Animated.Value(isFocused ? 0 : 10));
+    const [labelMarginBottom] = useState(
+      new Animated.Value(isFocused ? 0 : 10),
+    );
     const [lineScale] = useState(new Animated.Value(isFocused ? 0 : 10));
 
     // Animate opacity and translation when the tab becomes focused or unfocused
@@ -47,57 +61,61 @@ export const TabButton = forwardRef<View, TabButtonProps>(
       if (customContent) {
         return customContent;
       }
-      
+
       if (icon) {
         return (
           <View className="relative">
-            <View className={`${isFocused ? 'opacity-100' : 'opacity-40'}`}>
-              <Icon name={icon} size={24} strokeWidth={isFocused ? 2.5 : 2} color={colors.icon} />
+            <View className={`${isFocused ? "opacity-100" : "opacity-40"}`}>
+              <Icon
+                name={icon}
+                size={24}
+                strokeWidth={isFocused ? 2.5 : 2}
+                color={colors.icon}
+              />
             </View>
             {hasBadge && (
-              <View className="absolute w-3 h-3 border border-light-primary dark:border-dark-primary rounded-full bg-red-500 -top-1 -right-1.5" />
+              <View className="border-light-primary dark:border-dark-primary absolute -right-1.5 -top-1 h-3 w-3 rounded-full border bg-red-500" />
             )}
           </View>
         );
       }
-      
+
       return null;
     };
 
     return (
       <Pressable
-        className={`w-1/5 overflow-hidden ${isFocused ? '' : ''}`}
+        className={`w-1/5 overflow-hidden ${isFocused ? "" : ""}`}
         ref={ref}
         {...props}
-        onPress={onPress}>
-        <View className="flex-col items-center justify-center pt-4 pb-0 w-full relative">
-          <Animated.View className="absolute w-full h-[2px] bg-black dark:bg-white left-0 top-0"
+        onPress={onPress}
+      >
+        <View className="relative w-full flex-col items-center justify-center pb-0 pt-4">
+          <Animated.View
+            className="absolute left-0 top-0 h-[2px] w-full bg-black dark:bg-white"
             style={{
               opacity: lineScale,
               transform: [{ scaleX: lineScale }],
             }}
           />
-          
+
           {renderContent()}
 
           {labelAnimated ? (
-            <Animated.View className="relative"
+            <Animated.View
+              className="relative"
               style={{
                 opacity: labelOpacity,
                 transform: [{ translateY: labelMarginBottom }],
               }}
             >
-              <ThemedText className={`text-[9px] mt-px`}>
-                {children}
-              </ThemedText>
+              <ThemedText className={`mt-px text-[9px]`}>{children}</ThemedText>
             </Animated.View>
           ) : (
-            <ThemedText className={`text-[9px] mt-px`}>
-              {children}
-            </ThemedText>
+            <ThemedText className={`mt-px text-[9px]`}>{children}</ThemedText>
           )}
         </View>
       </Pressable>
     );
-  }
+  },
 );

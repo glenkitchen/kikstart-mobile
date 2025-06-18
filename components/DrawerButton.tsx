@@ -1,19 +1,23 @@
-import React from 'react';
-import { Pressable, View, ViewStyle } from 'react-native';
-import Icon from './Icon';
-import Avatar from './Avatar';
-import { useThemeColors } from 'app/contexts/ThemeColors';
-import { DrawerActions, useNavigation, NavigationProp } from '@react-navigation/native';
+import {
+  DrawerActions,
+  NavigationProp,
+  useNavigation,
+} from "@react-navigation/native";
+import React from "react";
+import { Pressable, View, ViewStyle } from "react-native";
+import { useThemeColors } from "../contexts/ThemeColors";
+import Avatar from "./Avatar";
+import Icon from "./Icon";
 
 interface DrawerButtonProps {
-  size?: 'sm' | 'md' | 'lg';
+  size?: "sm" | "md" | "lg";
   className?: string;
   style?: ViewStyle;
   isAvatar?: boolean;
 }
 
 export default function DrawerButton({
-  size = 'md',
+  size = "md",
   className,
   style,
   isAvatar = false,
@@ -31,7 +35,7 @@ export default function DrawerButton({
     try {
       navigation.dispatch(DrawerActions.openDrawer());
     } catch (e) {
-      console.warn('Drawer navigation context not available:', e);
+      console.warn("Drawer navigation context not available:", e);
     }
   };
 

@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { Pressable, Animated } from 'react-native';
-import { useTheme } from 'app/contexts/ThemeContext';
-import Icon from './Icon';
+import React, { useState } from "react";
+import { Animated, Pressable } from "react-native";
+import { useTheme } from "../contexts/ThemeContext";
+import Icon from "./Icon";
 
 interface ThemeToggleProps {
   value?: boolean;
@@ -15,9 +15,9 @@ const ThemeToggle: React.FC<ThemeToggleProps> = ({ value, onChange }) => {
   const [isAnimating, setIsAnimating] = useState(false);
 
   const animateIcon = () => {
-    if (isAnimating) return; 
+    if (isAnimating) return;
 
-    setIsAnimating(true); 
+    setIsAnimating(true);
     // Start the animation (scaling and rotating out)
     Animated.sequence([
       Animated.parallel([
@@ -64,7 +64,12 @@ const ThemeToggle: React.FC<ThemeToggleProps> = ({ value, onChange }) => {
         style={{
           transform: [
             { scale },
-            { rotate: rotate.interpolate({ inputRange: [0, 45], outputRange: ['0deg', '45deg'] }) },
+            {
+              rotate: rotate.interpolate({
+                inputRange: [0, 45],
+                outputRange: ["0deg", "45deg"],
+              }),
+            },
           ],
         }}
       >

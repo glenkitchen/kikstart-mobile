@@ -1,9 +1,16 @@
-import React, { ReactNode } from 'react';
-import { Text, View, TouchableOpacity, ViewStyle, Image, ImageSourcePropType } from 'react-native';
-import { Link } from 'expo-router';
-import Icon, { IconName } from './Icon';
+import { Link } from "expo-router";
+import React, { ReactNode } from "react";
+import {
+  Image,
+  ImageSourcePropType,
+  Text,
+  TouchableOpacity,
+  View,
+  ViewStyle,
+} from "react-native";
+import Icon, { IconName } from "./Icon";
 
-type ChipSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
+type ChipSize = "xs" | "sm" | "md" | "lg" | "xl" | "xxl";
 
 interface ChipProps {
   label: string;
@@ -27,7 +34,7 @@ export const Chip = ({
   isSelected,
   className,
   style,
-  size = 'md',
+  size = "md",
   href,
   onPress,
   icon,
@@ -40,12 +47,12 @@ export const Chip = ({
 }: ChipProps) => {
   // Size mappings
   const sizeClasses = {
-    xs: 'px-1.5 py-0.5 text-xs',
-    sm: 'px-2 py-0.5 text-xs',
-    md: 'px-3 py-1 text-sm',
-    lg: 'px-4 py-1.5 text-base',
-    xl: 'px-5 py-2 text-lg',
-    xxl: 'px-6 py-2.5 text-xl',
+    xs: "px-1.5 py-0.5 text-xs",
+    sm: "px-2 py-0.5 text-xs",
+    md: "px-3 py-1 text-sm",
+    lg: "px-4 py-1.5 text-base",
+    xl: "px-5 py-2 text-lg",
+    xxl: "px-6 py-2.5 text-xl",
   };
 
   // Default icon/image sizes based on chip size
@@ -61,7 +68,7 @@ export const Chip = ({
 
   // Handle selectable chips - if selectable is true and no onPress is provided, create a toggle handler
   const [selected, setSelected] = React.useState(isSelected || false);
-  
+
   const handlePress = () => {
     if (selectable) {
       setSelected(!selected);
@@ -77,35 +84,36 @@ export const Chip = ({
     if (leftContent) {
       return leftContent;
     }
-    
+
     if (icon) {
       return (
-        <Icon 
-          name={icon} 
-          size={getDefaultIconSize()} 
-          color={iconColor || (isChipSelected ? 'white' : 'gray')} 
-          className="mr-2 -ml-1" 
+        <Icon
+          name={icon}
+          size={getDefaultIconSize()}
+          color={iconColor || (isChipSelected ? "white" : "gray")}
+          className="-ml-1 mr-2"
         />
       );
     }
-    
+
     if (image) {
       return (
-        <Image className='rounded-lg mr-2 -ml-2'
-          source={image} 
-          style={{ 
-            width: getDefaultImageSize(), 
-            height: getDefaultImageSize(), 
-          }} 
+        <Image
+          className="-ml-2 mr-2 rounded-lg"
+          source={image}
+          style={{
+            width: getDefaultImageSize(),
+            height: getDefaultImageSize(),
+          }}
         />
       );
     }
-    
+
     return null;
   };
 
   // Extract size-specific classes
-  const [paddingClasses, textSizeClass] = sizeClasses[size].split(' text-');
+  const [paddingClasses, textSizeClass] = sizeClasses[size].split(" text-");
 
   // The chip content
   const chipContent = (
@@ -113,7 +121,7 @@ export const Chip = ({
       <View className="flex-row items-center">
         {renderLeftContent()}
         <Text
-          className={`text-${textSizeClass} ${isChipSelected ? 'text-white dark:text-black' : 'text-gray-700 dark:text-white/50'}`}
+          className={`text-${textSizeClass} ${isChipSelected ? "text-white dark:text-black" : "text-gray-700 dark:text-white/50"}`}
         >
           {label}
         </Text>
@@ -123,12 +131,9 @@ export const Chip = ({
 
   // Wrapper with appropriate styling
   const chipWrapper = (children: ReactNode) => (
-    <View 
-      className={`${className || ''}`} 
-      style={style}
-    >
+    <View className={`${className || ""}`} style={style}>
       <View
-        className={`${paddingClasses} rounded-full ${isChipSelected ? 'bg-black dark:bg-white' : 'bg-light-secondary dark:bg-dark-secondary'} flex-row items-center justify-center`}
+        className={`${paddingClasses} rounded-full ${isChipSelected ? "bg-black dark:bg-white" : "bg-light-secondary dark:bg-dark-secondary"} flex-row items-center justify-center`}
       >
         {children}
       </View>
@@ -138,7 +143,7 @@ export const Chip = ({
   // Return either a Link or TouchableOpacity based on props
   if (href) {
     return (
-      <Link href={href} asChild>
+      <Link href={href as any} asChild>
         <TouchableOpacity activeOpacity={0.7}>
           {chipWrapper(chipContent)}
         </TouchableOpacity>

@@ -1,12 +1,18 @@
-import React, { useRef, useEffect } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, Pressable, ViewStyle, Animated, NativeScrollEvent, NativeSyntheticEvent } from 'react-native';
-import { useThemeColors } from 'app/contexts/ThemeColors';
-import { Link } from 'expo-router';
-import Icon, { IconName } from './Icon';
-import { router } from 'expo-router';
-import { LinearGradient } from 'expo-linear-gradient';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { BlurView } from 'expo-blur';
+import { Link, router } from "expo-router";
+import React, { useEffect, useRef } from "react";
+import {
+  Animated,
+  Text,
+  TouchableOpacity,
+  View,
+  ViewStyle,
+} from "react-native";
+import { useThemeColors } from "../contexts/ThemeColors";
+import Icon, { IconName } from "./Icon";
+
+import { BlurView } from "expo-blur";
+import { LinearGradient } from "expo-linear-gradient";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 type HeaderProps = {
   title?: string;
@@ -22,7 +28,7 @@ type HeaderProps = {
   style?: ViewStyle;
   collapsible?: boolean;
   visible?: boolean;
-  variant?: 'default' | 'transparent' | 'blurred';
+  variant?: "default" | "transparent" | "blurred";
 };
 
 const Header: React.FC<HeaderProps> = ({
@@ -39,14 +45,14 @@ const Header: React.FC<HeaderProps> = ({
   style,
   collapsible = false,
   visible = true,
-  variant = 'default',
+  variant = "default",
 }) => {
   const colors = useThemeColors();
   const translateY = useRef(new Animated.Value(0)).current;
 
   // Determine if we should use the transparent or blurred variant styling
-  const isTransparent = variant === 'transparent';
-  const isBlurred = variant === 'blurred';
+  const isTransparent = variant === "transparent";
+  const isBlurred = variant === "blurred";
   const insets = useSafeAreaInsets();
   useEffect(() => {
     if (!collapsible) return;
@@ -60,9 +66,9 @@ const Header: React.FC<HeaderProps> = ({
       Animated.spring(translateY, {
         toValue: 0,
         useNativeDriver: true,
-        tension: 30,      // Higher tension for faster movement
-        friction: 50,     // Lower friction for slight bounce
-        velocity: 3,      // Higher initial velocity for more dramatic entrance
+        tension: 30, // Higher tension for faster movement
+        friction: 50, // Lower friction for slight bounce
+        velocity: 3, // Higher initial velocity for more dramatic entrance
       }).start();
     }
     // When hiding, use spring animation to slide up
@@ -70,9 +76,9 @@ const Header: React.FC<HeaderProps> = ({
       Animated.spring(translateY, {
         toValue: -150,
         useNativeDriver: true,
-        tension: 80,      // High tension for quick movement
-        friction: 12,     // Moderate friction for less bounce
-        velocity: 2,      // Initial velocity for natural feel
+        tension: 80, // High tension for quick movement
+        friction: 12, // Moderate friction for less bounce
+        velocity: 2, // Initial velocity for natural feel
       }).start();
     }
   }, [visible, collapsible, translateY]);
@@ -88,14 +94,17 @@ const Header: React.FC<HeaderProps> = ({
   const AnimatedView = Animated.createAnimatedComponent(View);
 
   // Position absolute for collapsible or transparent/blurred variant
-  const containerStyle = (collapsible || isTransparent || isBlurred) ? {
-    transform: collapsible ? [{ translateY }] : undefined,
-    position: 'absolute' as const,
-    top: 0,
-    left: 0,
-    right: 0,
-    zIndex: 100,
-  } : {};
+  const containerStyle =
+    collapsible || isTransparent || isBlurred
+      ? {
+          transform: collapsible ? [{ translateY }] : undefined,
+          position: "absolute" as const,
+          top: 0,
+          left: 0,
+          right: 0,
+          zIndex: 100,
+        }
+      : {};
 
   if (isBlurred) {
     return (
@@ -104,32 +113,35 @@ const Header: React.FC<HeaderProps> = ({
         tint="light"
         blurReductionFactor={0.5}
         style={[style, containerStyle, { paddingTop: insets.top }]}
-        className={`w-full py-4  px-global z-50 bg-light-primary/70 dark:bg-dark-primary/90 ${className}`}
+        className={`px-global bg-light-primary/70  dark:bg-dark-primary/90 z-50 w-full py-4 ${className}`}
       >
         <View className="flex-row justify-between">
-          <View className='flex-row items-center'>
+          <View className="flex-row items-center">
             {showBackButton && (
-              <TouchableOpacity onPress={handleBackPress} className='mr-global relative z-50'>
+              <TouchableOpacity
+                onPress={handleBackPress}
+                className="mr-global relative z-50"
+              >
                 <Icon name="ArrowLeft" size={24} />
               </TouchableOpacity>
             )}
 
-            <View className='flex-row items-center relative z-50'>
+            <View className="relative z-50 flex-row items-center">
               {leftComponent}
 
               {title && (
-                <Text className='text-white text-lg font-bold'>{title}</Text>
+                <Text className="text-lg font-bold text-white">{title}</Text>
               )}
             </View>
           </View>
 
           {middleComponent && (
-            <View className='flex-row items-center absolute top-0 left-0 right-0 bottom-0 justify-center'>
+            <View className="absolute bottom-0 left-0 right-0 top-0 flex-row items-center justify-center">
               {middleComponent}
             </View>
           )}
 
-          <View className='flex-row items-center relative z-50'>
+          <View className="relative z-50 flex-row items-center">
             {rightComponents.map((component, index) => (
               <View key={index} className="ml-6">
                 {component}
@@ -145,36 +157,39 @@ const Header: React.FC<HeaderProps> = ({
   if (isTransparent) {
     return (
       <LinearGradient
-        colors={['rgba(0,0,0,0.8)', 'transparent']}
+        colors={["rgba(0,0,0,0.8)", "transparent"]}
         style={[style, containerStyle, { paddingTop: insets.top }]}
-        className={`w-full pt-4 pb-10 px-global z-50 ${className}`}
+        className={`px-global z-50 w-full pb-10 pt-4 ${className}`}
         start={{ x: 0, y: 0 }}
         end={{ x: 0, y: 1 }}
       >
         <View className="flex-row justify-between">
-          <View className='flex-row items-center'>
+          <View className="flex-row items-center">
             {showBackButton && (
-              <TouchableOpacity onPress={handleBackPress} className='mr-global relative z-50'>
+              <TouchableOpacity
+                onPress={handleBackPress}
+                className="mr-global relative z-50"
+              >
                 <Icon name="ArrowLeft" size={24} color="white" />
               </TouchableOpacity>
             )}
 
-            <View className='flex-row items-center relative z-50'>
+            <View className="relative z-50 flex-row items-center">
               {leftComponent}
 
               {title && (
-                <Text className='text-white text-lg font-bold'>{title}</Text>
+                <Text className="text-lg font-bold text-white">{title}</Text>
               )}
             </View>
           </View>
 
           {middleComponent && (
-            <View className='flex-row items-center absolute top-0 left-0 right-0 bottom-0 justify-center'>
+            <View className="absolute bottom-0 left-0 right-0 top-0 flex-row items-center justify-center">
               {middleComponent}
             </View>
           )}
 
-          <View className='flex-row items-center relative z-50'>
+          <View className="relative z-50 flex-row items-center">
             {rightComponents.map((component, index) => (
               <View key={index} className="ml-6">
                 {component}
@@ -188,43 +203,51 @@ const Header: React.FC<HeaderProps> = ({
   }
 
   return (
-
     <AnimatedView
       style={[
         collapsible ? { paddingTop: insets.top } : { paddingTop: insets.top },
         style,
-        containerStyle
+        containerStyle,
       ]}
-      className={`w-full flex-row justify-between px-global bg-light-primary dark:bg-dark-primary relative z-50 ${className}`}
+      className={`px-global bg-light-primary dark:bg-dark-primary relative z-50 w-full flex-row justify-between ${className}`}
     >
-      
       {(showBackButton || leftComponent || title) && (
-        <View className='flex-row items-center flex-1'>
+        <View className="flex-1 flex-row items-center">
           {showBackButton && (
-            <TouchableOpacity onPress={handleBackPress} className='mr-global relative z-50 py-4'>
-              <Icon name="ArrowLeft" size={24} color={isTransparent ? 'white' : colors.icon} />
+            <TouchableOpacity
+              onPress={handleBackPress}
+              className="mr-global relative z-50 py-4"
+            >
+              <Icon
+                name="ArrowLeft"
+                size={24}
+                color={isTransparent ? "white" : colors.icon}
+              />
             </TouchableOpacity>
           )}
 
-          {leftComponent || title && (
-            <View className='flex-row items-center relative z-50 py-4  '>
-              {leftComponent}
+          {leftComponent ||
+            (title && (
+              <View className="relative z-50 flex-row items-center py-4  ">
+                {leftComponent}
 
-              {title && (
-                <Text className='dark:text-white text-lg font-bold'>{title}</Text>
-              )}
-            </View>
-          )}
+                {title && (
+                  <Text className="text-lg font-bold dark:text-white">
+                    {title}
+                  </Text>
+                )}
+              </View>
+            ))}
         </View>
       )}
       {middleComponent && (
-        <View className='flex-row items-center justify-center flex-1 py-4 '>
+        <View className="flex-1 flex-row items-center justify-center py-4 ">
           {middleComponent}
         </View>
       )}
 
       {rightComponents.length > 0 && (
-        <View className='flex-row items-center justify-end relative z-50 flex-1 '>
+        <View className="relative z-50 flex-1 flex-row items-center justify-end ">
           {rightComponents.map((component, index) => (
             <View key={index} className="ml-6">
               {component}
@@ -234,7 +257,6 @@ const Header: React.FC<HeaderProps> = ({
       )}
       {children}
     </AnimatedView>
-
   );
 };
 
@@ -249,13 +271,22 @@ type HeaderItemProps = {
   isWhite?: boolean;
 };
 
-export const HeaderIcon = ({ href, icon, hasBadge, onPress, className = '', isWhite = false }: HeaderItemProps) => (
+export const HeaderIcon = ({
+  href,
+  icon,
+  hasBadge,
+  onPress,
+  className = "",
+  isWhite = false,
+}: HeaderItemProps) => (
   <>
     {onPress ? (
-      <TouchableOpacity onPress={onPress} className='overflow-visible'>
-        <View className={`flex-row items-center justify-center relative overflow-visible h-7 w-7 ${className}`}>
+      <TouchableOpacity onPress={onPress} className="overflow-visible">
+        <View
+          className={`relative h-7 w-7 flex-row items-center justify-center overflow-visible ${className}`}
+        >
           {hasBadge && (
-            <View className='w-4 h-4 border-2 border-transparent dark:border-dark-primary z-30 absolute -top-0 -right-0 bg-red-500 rounded-full' />
+            <View className="dark:border-dark-primary absolute -right-0 -top-0 z-30 h-4 w-4 rounded-full border-2 border-transparent bg-red-500" />
           )}
           {isWhite ? (
             <Icon name={icon} size={25} color="white" />
@@ -265,11 +296,13 @@ export const HeaderIcon = ({ href, icon, hasBadge, onPress, className = '', isWh
         </View>
       </TouchableOpacity>
     ) : (
-      <Link href={href} asChild>
-        <TouchableOpacity className='overflow-visible'>
-          <View className={`flex-row items-center justify-center relative overflow-visible h-7 w-7 ${className}`}>
+      <Link href={href as any} asChild>
+        <TouchableOpacity className="overflow-visible">
+          <View
+            className={`relative h-7 w-7 flex-row items-center justify-center overflow-visible ${className}`}
+          >
             {hasBadge && (
-              <View className='w-3 h-3 border-2 border-transparent dark:border-dark-primary z-30 absolute -top-0 -right-[3px] bg-red-500 rounded-full' />
+              <View className="dark:border-dark-primary absolute -right-[3px] -top-0 z-30 h-3 w-3 rounded-full border-2 border-transparent bg-red-500" />
             )}
             {isWhite ? (
               <Icon name={icon} size={25} color="white" />

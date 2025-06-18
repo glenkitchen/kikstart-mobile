@@ -1,9 +1,9 @@
-import React, { ReactNode } from 'react';
-import { View, Pressable } from 'react-native';
-import ThemedText from '../ThemedText';
-import Icon, { IconName } from '../Icon';
-import useThemeColors from '@/app/contexts/ThemeColors';
-import AnimatedView from '../AnimatedView';
+import React, { ReactNode } from "react";
+import { Pressable, View } from "react-native";
+import useThemeColors from "../../contexts/ThemeColors";
+import AnimatedView from "../AnimatedView";
+import Icon, { IconName } from "../Icon";
+import ThemedText from "../ThemedText";
 
 interface SelectableProps {
   title: string;
@@ -27,8 +27,8 @@ const Selectable: React.FC<SelectableProps> = ({
   selected = false,
   onPress,
   error,
-  className = '',
-  containerClassName = '',
+  className = "",
+  containerClassName = "",
 }) => {
   const colors = useThemeColors();
 
@@ -37,64 +37,48 @@ const Selectable: React.FC<SelectableProps> = ({
       <Pressable
         onPress={onPress}
         className={`
-          border rounded-lg p-4 active:opacity-70
-          ${selected ? 'border-black dark:border-white' : 'border-black/20 dark:border-white/20'}
-          ${error ? 'border-red-500' : ''}
+          rounded-lg border p-4 active:opacity-70
+          ${selected ? "border-black dark:border-white" : "border-black/20 dark:border-white/20"}
+          ${error ? "border-red-500" : ""}
           ${className}
         `}
       >
         <View className="flex-row items-center">
           {icon && (
             <View className="mr-4">
-              <Icon 
-                name={icon} 
-                size={24} 
-                color={iconColor || colors.text}
-              />
+              <Icon name={icon} size={24} color={iconColor || colors.text} />
             </View>
           )}
-          {customIcon && (
-            <View className="mr-4">
-              {customIcon}
-            </View>
-          )}
+          {customIcon && <View className="mr-4">{customIcon}</View>}
           <View className="flex-1">
-            <ThemedText className="font-semibold text-base">
-              {title}
-            </ThemedText>
+            <ThemedText className="text-base font-semibold">{title}</ThemedText>
             {description && (
-              <ThemedText className="text-sm text-light-subtext dark:text-dark-subtext mt-0">
+              <ThemedText className="text-light-subtext dark:text-dark-subtext mt-0 text-sm">
                 {description}
               </ThemedText>
             )}
           </View>
           {selected ? (
             <AnimatedView className="ml-3" animation="bounceIn" duration={500}>
-              <Icon 
-                name="CheckCircle2" 
-                size={20} 
-                color={colors.highlight}
-              />
+              <Icon name="CheckCircle2" size={20} color={colors.highlight} />
             </AnimatedView>
           ) : (
-            <AnimatedView className="ml-3 opacity-0" animation="bounceIn" duration={500}>
-              <Icon 
-                name="CheckCircle2" 
-                size={20} 
-                color={colors.highlight}
-              />
+            <AnimatedView
+              className="ml-3 opacity-0"
+              animation="bounceIn"
+              duration={500}
+            >
+              <Icon name="CheckCircle2" size={20} color={colors.highlight} />
             </AnimatedView>
           )}
         </View>
       </Pressable>
 
       {error && (
-        <ThemedText className="text-red-500 text-xs mt-1">
-          {error}
-        </ThemedText>
+        <ThemedText className="mt-1 text-xs text-red-500">{error}</ThemedText>
       )}
     </View>
   );
 };
 
-export default Selectable; 
+export default Selectable;

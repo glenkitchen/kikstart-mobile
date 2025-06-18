@@ -1,27 +1,24 @@
-import React, { useEffect } from 'react';
-import { Platform, StatusBar as RNStatusBar } from 'react-native';
-import { StatusBar } from 'expo-status-bar';
-import * as NavigationBar from 'expo-navigation-bar';
-import { useTheme } from '@/app/contexts/ThemeContext';
-import useThemeColors from '@/app/contexts/ThemeColors';
+import * as NavigationBar from "expo-navigation-bar";
+import { StatusBar } from "expo-status-bar";
+import React, { useEffect } from "react";
+import { Platform } from "react-native";
+import useThemeColors from "../contexts/ThemeColors";
+import { useTheme } from "../contexts/ThemeContext";
 
 export default function useThemedNavigation() {
   const { isDark } = useTheme();
   const colors = useThemeColors();
-  
+
   useEffect(() => {
-    if (Platform.OS === 'android') {
-
+    if (Platform.OS === "android") {
       NavigationBar.setBackgroundColorAsync(colors.bg);
-      NavigationBar.setButtonStyleAsync(isDark ? 'light' : 'dark');
-
-    } 
+      NavigationBar.setButtonStyleAsync(isDark ? "light" : "dark");
+    }
   }, [isDark, colors.bg]);
-
 
   const ThemedStatusBar = () => (
     <StatusBar
-      style={isDark ? 'light' : 'dark'}
+      style={isDark ? "light" : "dark"}
       backgroundColor="transparent"
       translucent={true}
     />
@@ -29,15 +26,15 @@ export default function useThemedNavigation() {
 
   const screenOptions = {
     headerShown: false,
-    contentStyle: { 
-      backgroundColor: colors.bg 
-    }
+    contentStyle: {
+      backgroundColor: colors.bg,
+    },
   };
 
   return {
     ThemedStatusBar,
     screenOptions,
     colors,
-    isDark
+    isDark,
   };
-} 
+}
