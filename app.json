@@ -16,7 +16,14 @@
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "permissions": [
+        "android.permission.RECORD_AUDIO",
+        "android.permission.MODIFY_AUDIO_SETTINGS",
+        "android.permission.RECORD_AUDIO",
+        "android.permission.MODIFY_AUDIO_SETTINGS"
+      ],
+      "package": "com.glenkit.kikstartmobile"
     },
     "web": {
       "bundler": "metro",
@@ -33,7 +40,11 @@
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
         }
-      ]
+      ],
+      "expo-audio",
+      "expo-maps",
+      "expo-secure-store",
+      "expo-video"
     ],
     "experiments": {
       "typedRoutes": true
