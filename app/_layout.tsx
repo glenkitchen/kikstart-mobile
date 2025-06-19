@@ -21,10 +21,7 @@ function ThemedLayout() {
             backgroundColor: colors.bg,
           },
         }}
-      >
-        <Stack.Screen name="(drawer)" />
-        <Stack.Screen name="(screens)" />
-      </Stack>
+      />
     </>
   );
 }

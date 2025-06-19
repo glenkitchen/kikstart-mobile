@@ -58,11 +58,11 @@ export default function HomeScreen() {
     <HeaderIcon
       hasBadge
       icon="Bell"
-      href="/screens/notifications"
+      href="/(screens)/notifications"
       key="bell"
     />,
     <Avatar
-      link="/screens/profile"
+      link="/(screens)/profile"
       size="xxs"
       className="mb-1 ml-1"
       src={require("@/assets/img/thomino.jpg")}
