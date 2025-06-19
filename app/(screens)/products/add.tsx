@@ -1,21 +1,18 @@
+import { Button } from "@/components/Button";
+import Input from "@/components/forms/Input";
+import Select from "@/components/forms/Select";
 import Icon from "@/components/Icon";
+import { MultipleImagePicker } from "@/components/MultipleImagePicker";
+import MultiStep, { Step } from "@/components/MultiStep";
+import ProductVariantCreator from "@/components/ProductVariantCreator";
+import ThemedText from "@/components/ThemedText";
+import ThemedScroller from "@/components/ThemeScroller";
+import { useThemeColors } from "@/contexts/ThemeColors";
 import { useNavigation } from "@react-navigation/native";
 import React, { useEffect, useRef, useState } from "react";
 import { Alert, BackHandler, Pressable, Text, View } from "react-native";
 import ActionSheet, { ActionSheetRef } from "react-native-actions-sheet";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { useThemeColors } from "../../contexts/ThemeColors";
-
-import Input from "@/components/forms/Input";
-import Select from "@/components/forms/Select";
-
-import { MultipleImagePicker } from "@/components/MultipleImagePicker";
-import ProductVariantCreator from "@/components/ProductVariantCreator";
-import ThemedText from "@/components/ThemedText";
-
-import { Button } from "@/components/Button";
-import MultiStep, { Step } from "@/components/MultiStep";
-import ThemedScroller from "@/components/ThemeScroller";
 
 const AddServiceFlow = () => {
   const navigation = useNavigation();
@@ -127,7 +124,6 @@ const AddServiceFlow = () => {
             <ThemedText className="mb-4 text-sm text-light-subtext dark:text-dark-subtext">
               Describe your product in few words and add photos
             </ThemedText>
-
             <MultipleImagePicker />
             <View className="mt-6">
               <Input

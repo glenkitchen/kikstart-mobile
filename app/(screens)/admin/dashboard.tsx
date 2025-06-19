@@ -10,6 +10,7 @@ import ListItem from "@/components/layout/ListItem";
 import { Section } from "@/components/layout/Section";
 import ThemedText from "@/components/ThemedText";
 import ThemedScroller from "@/components/ThemeScroller";
+import { useThemeColors } from "@/contexts/ThemeColors";
 import React, { useState } from "react";
 import {
   Dimensions,
@@ -21,7 +22,6 @@ import {
 } from "react-native";
 import { ActionSheetRef } from "react-native-actions-sheet";
 import { LineChart } from "react-native-chart-kit";
-import { useThemeColors } from "../../contexts/ThemeColors";
 
 const DashboardScreen = () => {
   const colors = useThemeColors();
@@ -201,6 +201,7 @@ const DashboardScreen = () => {
         showBackButton
         rightComponents={[
           <Button
+            key="filter-button"
             title="Past 7 days"
             variant="outline"
             size="small"
@@ -234,7 +235,11 @@ const DashboardScreen = () => {
         </View>
 
         <CardScroller title="Top Customers">
-          <CustomCard className="w-32 items-center py-6" border>
+          <CustomCard
+            key="customer-1"
+            className="w-32 items-center py-6"
+            border
+          >
             <Avatar
               src="https://mighty.tools/mockmind-api/content/human/128.jpg"
               size="md"
@@ -244,7 +249,11 @@ const DashboardScreen = () => {
               Jessica Alba
             </ThemedText>
           </CustomCard>
-          <CustomCard className="w-32 items-center py-6" border>
+          <CustomCard
+            key="customer-2"
+            className="w-32 items-center py-6"
+            border
+          >
             <Avatar
               src="https://mighty.tools/mockmind-api/content/human/120.jpg"
               size="md"
@@ -254,7 +263,11 @@ const DashboardScreen = () => {
               Cate Who
             </ThemedText>
           </CustomCard>
-          <CustomCard className="w-32 items-center py-6" border>
+          <CustomCard
+            key="customer-3"
+            className="w-32 items-center py-6"
+            border
+          >
             <Avatar
               src="https://mighty.tools/mockmind-api/content/human/121.jpg"
               size="md"
@@ -264,7 +277,11 @@ const DashboardScreen = () => {
               Jamie Jones
             </ThemedText>
           </CustomCard>
-          <CustomCard className="w-32 items-center py-6" border>
+          <CustomCard
+            key="customer-4"
+            className="w-32 items-center py-6"
+            border
+          >
             <Avatar
               src="https://mighty.tools/mockmind-api/content/human/102.jpg"
               size="md"
@@ -274,7 +291,11 @@ const DashboardScreen = () => {
               Sam Smith
             </ThemedText>
           </CustomCard>
-          <CustomCard className="w-32 items-center py-6" border>
+          <CustomCard
+            key="customer-5"
+            className="w-32 items-center py-6"
+            border
+          >
             <Avatar
               src="https://mighty.tools/mockmind-api/content/human/105.jpg"
               size="md"

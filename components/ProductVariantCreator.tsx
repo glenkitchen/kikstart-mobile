@@ -181,7 +181,7 @@ const ProductVariantCreator: React.FC<ProductVariantCreatorProps> = ({
       ) : (
         <View className=" relative z-50 flex-row items-center justify-center rounded-lg bg-neutral-100 px-4 py-3">
           <Text className="text-neutral-400 dark:text-white">
-            You've reached 3 options limit{" "}
+            You&apos;ve reached 3 options limit{" "}
           </Text>
         </View>
       )}

@@ -103,11 +103,11 @@ export default function AdminProductsScreen() {
   });
 
   const handleProductPress = (productId: string) => {
-    router.push(`/screens/admin/add-product-flow`);
+    router.push(`/(screens)/products/${productId}`);
   };
 
   return (
-    <View className="bg-light-primary dark:bg-dark-primary flex-1">
+    <View className="flex-1 bg-light-primary dark:bg-dark-primary">
       <Header
         title="Products"
         showBackButton
@@ -115,7 +115,7 @@ export default function AdminProductsScreen() {
           <TouchableOpacity
             key="add"
             className="ml-2"
-            onPress={() => router.push("/screens/admin/add-product-flow")}
+            onPress={() => router.push("/(screens)/products/add")}
           >
             <Icon name="Plus" size={24} />
           </TouchableOpacity>,
@@ -126,7 +126,7 @@ export default function AdminProductsScreen() {
       <View className="px-global py-3">
         <View className="relative">
           <TextInput
-            className="bg-light-secondary dark:bg-dark-secondary text-light-text dark:text-dark-text rounded-lg px-10 py-3"
+            className="rounded-lg bg-light-secondary px-10 py-3 text-light-text dark:bg-dark-secondary dark:text-dark-text"
             placeholder="Search products..."
             placeholderTextColor="#888"
             value={searchQuery}
@@ -172,7 +172,7 @@ export default function AdminProductsScreen() {
           renderItem={({ item }) => (
             <TouchableOpacity
               onPress={() => handleProductPress(item.id)}
-              className="px-global border-light-secondary dark:border-dark-secondary flex-row items-center border-b py-3"
+              className="flex-row items-center border-b border-light-secondary px-global py-3 dark:border-dark-secondary"
             >
               <Image
                 source={item.image}
@@ -185,7 +185,7 @@ export default function AdminProductsScreen() {
                   <View
                     className={`h-2 w-2 rounded-full ${item.stock < 10 ? "bg-red-500" : "bg-green-500"} mr-2`}
                   />
-                  <ThemedText className="text-light-subtext dark:text-dark-subtext text-sm">
+                  <ThemedText className="text-sm text-light-subtext dark:text-dark-subtext">
                     {item.stock} in stock
                   </ThemedText>
                 </View>
@@ -199,12 +199,12 @@ export default function AdminProductsScreen() {
           <Icon
             name="Package"
             size={64}
-            className="text-light-secondary dark:text-dark-secondary mb-4"
+            className="mb-4 text-light-secondary dark:text-dark-secondary"
           />
           <ThemedText className="mb-2 text-xl font-bold">
             No products found
           </ThemedText>
-          <ThemedText className="text-light-subtext dark:text-dark-subtext text-center">
+          <ThemedText className="text-center text-light-subtext dark:text-dark-subtext">
             Try changing your search or filter criteria
           </ThemedText>
         </View>
@@ -212,7 +212,7 @@ export default function AdminProductsScreen() {
       <FloatingButton
         icon="Plus"
         label="Add Product"
-        onPress={() => router.push("/screens/admin/add-product-flow")}
+        onPress={() => router.push("/(screens)/products/add")}
       />
     </View>
   );
