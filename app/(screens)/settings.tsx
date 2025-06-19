@@ -4,7 +4,7 @@ import FormTabs, { FormTab } from "@/components/forms/FormTabs";
 import Input from "@/components/forms/Input";
 import Header from "@/components/Header";
 import Icon from "@/components/Icon";
-import Divider from "@/components/layout/Divider";
+import { Divider } from "@/components/layout/Divider";
 import { Section } from "@/components/layout/Section";
 import ThemedScroller from "@/components/ThemeScroller";
 import * as ImagePicker from "expo-image-picker";
@@ -37,7 +37,7 @@ export default function SettingsScreen() {
     <>
       <Header
         showBackButton
-        rightComponents={[<Button title="Save changes" />]}
+        rightComponents={[<Button key="save-changes" title="Save changes" />]}
       />
       <KeyboardAvoidingView behavior="padding" className="flex-1">
         <ThemedScroller>
@@ -109,10 +109,10 @@ export default function SettingsScreen() {
               {profileImage ? (
                 <Image
                   source={{ uri: profileImage }}
-                  className="border-light-primary dark:border-dark-primary h-28 w-28 rounded-full border"
+                  className="h-28 w-28 rounded-full border border-light-primary dark:border-dark-primary"
                 />
               ) : (
-                <View className="bg-light-secondary dark:bg-dark-secondary h-24 w-24 items-center justify-center rounded-full">
+                <View className="h-24 w-24 items-center justify-center rounded-full bg-light-secondary dark:bg-dark-secondary">
                   <Icon
                     name="Plus"
                     size={25}
@@ -124,7 +124,7 @@ export default function SettingsScreen() {
             <View className="ml-4">
               <Button
                 title={profileImage ? "Change photo" : "Upload photo"}
-                className="text-light-subtext dark:text-dark-subtext text-sm"
+                className="text-sm text-light-subtext dark:text-dark-subtext"
                 onPress={pickImage}
               />
 

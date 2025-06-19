@@ -113,14 +113,14 @@ const Header: React.FC<HeaderProps> = ({
         tint="light"
         blurReductionFactor={0.5}
         style={[style, containerStyle, { paddingTop: insets.top }]}
-        className={`px-global bg-light-primary/70  dark:bg-dark-primary/90 z-50 w-full py-4 ${className}`}
+        className={`z-50 w-full  bg-light-primary/70 px-global py-4 dark:bg-dark-primary/90 ${className}`}
       >
         <View className="flex-row justify-between">
           <View className="flex-row items-center">
             {showBackButton && (
               <TouchableOpacity
                 onPress={handleBackPress}
-                className="mr-global relative z-50"
+                className="relative z-50 mr-global"
               >
                 <Icon name="ArrowLeft" size={24} />
               </TouchableOpacity>
@@ -159,7 +159,7 @@ const Header: React.FC<HeaderProps> = ({
       <LinearGradient
         colors={["rgba(0,0,0,0.8)", "transparent"]}
         style={[style, containerStyle, { paddingTop: insets.top }]}
-        className={`px-global z-50 w-full pb-10 pt-4 ${className}`}
+        className={`z-50 w-full px-global pb-10 pt-4 ${className}`}
         start={{ x: 0, y: 0 }}
         end={{ x: 0, y: 1 }}
       >
@@ -168,7 +168,7 @@ const Header: React.FC<HeaderProps> = ({
             {showBackButton && (
               <TouchableOpacity
                 onPress={handleBackPress}
-                className="mr-global relative z-50"
+                className="relative z-50 mr-global"
               >
                 <Icon name="ArrowLeft" size={24} color="white" />
               </TouchableOpacity>
@@ -209,14 +209,14 @@ const Header: React.FC<HeaderProps> = ({
         style,
         containerStyle,
       ]}
-      className={`px-global bg-light-primary dark:bg-dark-primary relative z-50 w-full flex-row justify-between ${className}`}
+      className={`relative z-50 w-full flex-row justify-between bg-light-primary px-global dark:bg-dark-primary ${className}`}
     >
       {(showBackButton || leftComponent || title) && (
         <View className="flex-1 flex-row items-center">
           {showBackButton && (
             <TouchableOpacity
               onPress={handleBackPress}
-              className="mr-global relative z-50 py-4"
+              className="relative z-50 mr-global py-4"
             >
               <Icon
                 name="ArrowLeft"
@@ -286,7 +286,7 @@ export const HeaderIcon = ({
           className={`relative h-7 w-7 flex-row items-center justify-center overflow-visible ${className}`}
         >
           {hasBadge && (
-            <View className="dark:border-dark-primary absolute -right-0 -top-0 z-30 h-4 w-4 rounded-full border-2 border-transparent bg-red-500" />
+            <View className="absolute -right-0 -top-0 z-30 h-4 w-4 rounded-full border-2 border-transparent bg-red-500 dark:border-dark-primary" />
           )}
           {isWhite ? (
             <Icon name={icon} size={25} color="white" />
@@ -302,7 +302,7 @@ export const HeaderIcon = ({
             className={`relative h-7 w-7 flex-row items-center justify-center overflow-visible ${className}`}
           >
             {hasBadge && (
-              <View className="dark:border-dark-primary absolute -right-[3px] -top-0 z-30 h-3 w-3 rounded-full border-2 border-transparent bg-red-500" />
+              <View className="absolute -right-[3px] -top-0 z-30 h-3 w-3 rounded-full border-2 border-transparent bg-red-500 dark:border-dark-primary" />
             )}
             {isWhite ? (
               <Icon name={icon} size={25} color="white" />

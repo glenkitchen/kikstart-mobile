@@ -31,7 +31,7 @@ export default function ThemedScroller({
       style={{ width: "100%" }}
       bounces={false}
       overScrollMode="never"
-      className={`bg-light-primary dark:bg-dark-primary px-global flex-1 ${className || ""}`}
+      className={`flex-1 bg-light-primary px-global dark:bg-dark-primary ${className || ""}`}
       onScroll={onScroll}
       scrollEventThrottle={scrollEventThrottle}
       contentContainerStyle={[

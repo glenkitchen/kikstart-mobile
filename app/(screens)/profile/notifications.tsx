@@ -7,6 +7,7 @@ import { Section } from "@/components/layout/Section";
 import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
 import { View } from "react-native";
+
 const NotificationsScreen = () => {
   const navigation = useNavigation();
 
@@ -40,7 +41,7 @@ const NotificationsScreen = () => {
       <Header
         showBackButton
         rightComponents={[
-          <Button title="Save changes" onPress={saveSettings} />,
+          <Button key="save" title="Save changes" onPress={saveSettings} />,
         ]}
       />
       <ThemedScroller>

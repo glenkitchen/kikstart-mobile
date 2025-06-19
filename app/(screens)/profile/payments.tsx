@@ -6,6 +6,7 @@ import ThemedText from "@/components/ThemedText";
 import Toggle from "@/components/Toggle";
 import Input from "@/components/forms/Input";
 import { Section } from "@/components/layout/Section";
+import { useThemeColors } from "@/contexts/ThemeColors";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import React, { useState } from "react";
 import {
@@ -17,7 +18,6 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import { useThemeColors } from "../../contexts/ThemeColors";
 
 const { width } = Dimensions.get("window");
 // Sample payment methods

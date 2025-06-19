@@ -45,9 +45,9 @@ export default function CustomDrawerContent() {
         </View>
 
         <View className="my-6 flex-col py-6">
-          <NavItem href="/screens/profile" icon="User" label="Profile" />
-          <NavItem href="/screens/orders" icon="Package" label="Orders" />
+          <NavItem href="/(screens)/profile" icon="User" label="Profile" />
           <NavItem href="/screens/admin" icon="Contact" label="Admin" />
+          <NavItem href="/screens/orders" icon="Package" label="Orders" />
           <NavItem
             href="/screens/onboarding-start"
             icon="Lightbulb"
@@ -61,6 +61,7 @@ export default function CustomDrawerContent() {
           />
           <NavItem href="/screens/login" icon="ArrowLeft" label="Sign out" />
         </View>
+
         <ThemedText className="text-sm text-light-subtext dark:text-dark-subtext">
           Version 0.0.12
         </ThemedText>

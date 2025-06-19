@@ -23,6 +23,7 @@ function ThemedLayout() {
         }}
       >
         <Stack.Screen name="(drawer)" />
+        <Stack.Screen name="(screens)" />
       </Stack>
     </>
   );
