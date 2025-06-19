@@ -1,7 +1,7 @@
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { Link } from "expo-router";
 import { Dimensions, Text, TouchableOpacity, View } from "react-native";
-import useThemeColors from "../contexts/ThemeColors";
+import { useThemeColors } from "../contexts/ThemeColors";
 import ImageCarousel from "./ImageCarousel";
 import ThemedText from "./ThemedText";
 
@@ -35,7 +35,7 @@ const SliderCard = ({
 
   return (
     <View
-      className={`p-global bg-light-primary dark:bg-dark-primary mb-0 w-full ${className}`}
+      className={`mb-0 w-full bg-light-primary p-global dark:bg-dark-primary ${className}`}
       {...props}
     >
       <View className="relative w-full">
@@ -60,7 +60,7 @@ const SliderCard = ({
               </View>
             )}
           </View>
-          <Text className="text-light-subtext dark:text-dark-subtext text-sm">
+          <Text className="text-sm text-light-subtext dark:text-dark-subtext">
             {distance} miles away
           </Text>
           <ThemedText className="mt-2 text-base font-bold">

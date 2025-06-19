@@ -12,7 +12,7 @@ import Animated, {
   useSharedValue,
   withTiming,
 } from "react-native-reanimated";
-import useThemeColors from "../contexts/ThemeColors";
+import { useThemeColors } from "../contexts/ThemeColors";
 import Icon, { IconName } from "./Icon";
 
 const { width: windowWidth } = Dimensions.get("window");

@@ -1,19 +1,28 @@
+import { useThemeColors } from "@/contexts/ThemeColors";
+import { ThemeProvider } from "@/contexts/ThemeContext";
+import "@/global.css";
+import useThemedNavigation from "@/hooks/useThemedNavigation";
 import { Stack } from "expo-router";
 import React from "react";
 import { Platform } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-import { ThemeProvider } from "../contexts/ThemeContext";
-import "../global.css";
-import useThemedNavigation from "../hooks/useThemedNavigation";
 
 function ThemedLayout() {
-  const { ThemedStatusBar, screenOptions } = useThemedNavigation();
+  const colors = useThemeColors();
+  const { ThemedStatusBar } = useThemedNavigation();
 
   return (
     <>
       <ThemedStatusBar />
-      <Stack screenOptions={screenOptions}>
-        <Stack.Screen name="(drawer)" options={{ headerShown: false }} />
+      <Stack
+        screenOptions={{
+          headerShown: false,
+          contentStyle: {
+            backgroundColor: colors.bg,
+          },
+        }}
+      >
+        <Stack.Screen name="(drawer)" />
       </Stack>
     </>
   );

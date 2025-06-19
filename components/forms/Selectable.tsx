@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
 import { Pressable, View } from "react-native";
-import useThemeColors from "../../contexts/ThemeColors";
+import { useThemeColors } from "../../contexts/ThemeColors";
 import AnimatedView from "../AnimatedView";
 import Icon, { IconName } from "../Icon";
 import ThemedText from "../ThemedText";
@@ -53,7 +53,7 @@ const Selectable: React.FC<SelectableProps> = ({
           <View className="flex-1">
             <ThemedText className="text-base font-semibold">{title}</ThemedText>
             {description && (
-              <ThemedText className="text-light-subtext dark:text-dark-subtext mt-0 text-sm">
+              <ThemedText className="mt-0 text-sm text-light-subtext dark:text-dark-subtext">
                 {description}
               </ThemedText>
             )}

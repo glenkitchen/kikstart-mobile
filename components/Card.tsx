@@ -11,7 +11,7 @@ import {
   View,
   ViewStyle,
 } from "react-native";
-import useThemeColors from "../contexts/ThemeColors";
+import { useThemeColors } from "../contexts/ThemeColors";
 import { Button } from "./Button";
 import Favorite from "./Favorite";
 import ThemedText from "./ThemedText";

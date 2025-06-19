@@ -6,7 +6,7 @@ import {
   TextInputProps,
   View,
 } from "react-native";
-import useThemeColors from "../../contexts/ThemeColors";
+import { useThemeColors } from "../../contexts/ThemeColors";
 import Icon, { IconName } from "../Icon";
 import ThemedText from "../ThemedText";
 
@@ -127,7 +127,7 @@ const Input: React.FC<CustomTextInputProps> = ({
   if (variant === "classic") {
     return (
       <View
-        className={`mb-global relative ${containerClassName}`}
+        className={`relative mb-global ${containerClassName}`}
         style={{ position: "relative" }}
       >
         {label && <ThemedText className="mb-1 font-medium">{label}</ThemedText>}
@@ -163,12 +163,12 @@ const Input: React.FC<CustomTextInputProps> = ({
   if (variant === "underlined") {
     return (
       <View
-        className={`mb-global relative ${containerClassName}`}
+        className={`relative mb-global ${containerClassName}`}
         style={{ position: "relative" }}
       >
         <View className="relative">
           <Pressable
-            className="bg-light-primary dark:bg-dark-primary z-40 px-0"
+            className="z-40 bg-light-primary px-0 dark:bg-dark-primary"
             onPress={() => inputRef.current?.focus()}
           >
             <Animated.Text
@@ -230,15 +230,15 @@ const Input: React.FC<CustomTextInputProps> = ({
 
   // Default animated input (original)
   return (
-    <View className={`mb-global relative ${containerClassName}`}>
+    <View className={`relative mb-global ${containerClassName}`}>
       <Pressable
-        className="bg-light-primary dark:bg-dark-primary z-40 px-1"
+        className="z-40 bg-light-primary px-1 dark:bg-dark-primary"
         style={{ position: "absolute", left: 4, top: 0 }}
         onPress={() => inputRef.current?.focus()}
       >
         <Animated.Text
           style={[labelStyle]}
-          className="bg-light-primary dark:bg-dark-primary text-black dark:text-white"
+          className="bg-light-primary text-black dark:bg-dark-primary dark:text-white"
         >
           {label}
         </Animated.Text>

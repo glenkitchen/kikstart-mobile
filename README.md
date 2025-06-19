@@ -1,43 +1,50 @@
 # Setup
 
-Create application
+- Create application
 
 ```bash
-bun create expo-app
-```
+# Create application
+bunx create-expo-app
 
-Reset project
-
-```
+## Reset project
 bun run reset-project
 ```
 
-[Install Nativewind](https://www.nativewind.dev/docs/getting-started/installation)
+- [Install Nativewind](https://www.nativewind.dev/docs/getting-started/installation)
 
-Install Expo dependencies
+- Install Expo dependencies
 
 ```bash
 # Install
+bunx expo install expo-asset
 bunx expo install expo-audio
 bunx expo install expo-camera
 bunx expo install expo-checkbox
 bunx expo install expo-dev-client
 bunx expo install expo-file-system
 bunx expo install expo-image-picker
+bunx expo install expo-linear-gradient
+bunx expo install expo-location
 bunx expo install expo-maps
 bunx expo install expo-media-library
+bunx expo install expo-navigation-bar
+bunx expo install expo-notifications
 bunx expo install expo-secure-store
+bunx expo install expo-sharing
+bunx expo install expo-updates
 bunx expo install expo-video
 
-# Doctor
+# Run Expo doctor
 bunx expo-doctor
 
-# Build
+# Run native build
 bunx expo prebuild
 bunx expo run:android -d
 ```
 
-Install template dependencies in AI Chat.
+- Install template dependencies.
+
+Use Cursor to extract dependencies. (Compare `package.json`)
 
 ```bash
 bunx expo install @expo-google-fonts/outfit
@@ -69,28 +76,29 @@ bunx expo install tailwind-merge
 bunx expo install victory-native
 ```
 
-Copy template components
+- Copy template components and screens
 
-- Copy folders and tailwind configuration
+  - Copy files and folders (Including Tailwindcss configuration):
 
-  - app/\_layout.tsx
-  - app/[...404].tsx
-  - assets/
-  - components/
-  - contexts/
-  - hooks/
-  - lib/
-  - screens/
-  - utils/
-  - tailwind.config.js
+    - `app/\_layout.tsx`
+    - `app/[...404].tsx`
+    - `assets/`
+    - `components/`
+    - `contexts/`
+    - `hooks/`
+    - `lib/`
+    - `screens/`
+    - `utils/`
+    - `tailwind.config.js`
 
-- Fix errors in AI Chat.
-  - Navigation/Link Type Errors (expo-router)
-  - IconName Type Errors
-  - Section Import Errors
-  - NativeWind v4 Migration (Usage of deprecated APIs like styled and NativeWindStyleSheet from nativewind v4+.)
-  - Other Prop Type Mismatches
+  - Check and fix errors with Cursor:
 
-```bash
-bunx tsc --noEmit
-```
+    ```bash
+    bunx tsc --noEmit
+    ```
+
+    - Navigation/Link Type Errors (expo-router)
+    - IconName Type Errors
+    - Section Import Errors
+    - NativeWind v4 Migration (Usage of deprecated APIs like styled and NativeWindStyleSheet from nativewind v4+.)
+    - Other Prop Type Mismatches

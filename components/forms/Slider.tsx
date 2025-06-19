@@ -13,7 +13,7 @@ import Animated, {
   useSharedValue,
   withTiming,
 } from "react-native-reanimated";
-import useThemeColors from "../../contexts/ThemeColors";
+import { useThemeColors } from "../../contexts/ThemeColors";
 import ThemedText from "../ThemedText";
 
 type SliderSize = "s" | "m" | "l";

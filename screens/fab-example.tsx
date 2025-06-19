@@ -4,20 +4,20 @@ import ThemedText from "@/components/ThemedText";
 import { Stack } from "expo-router";
 import React from "react";
 import { Text, TextInput, View } from "react-native";
-import useThemeColors from "../contexts/ThemeColors";
+import { useThemeColors } from "../contexts/ThemeColors";
 
 export default function FabExampleScreen() {
   const colors = useThemeColors();
 
   return (
-    <View className="bg-light-primary dark:bg-dark-primary flex-1">
+    <View className="flex-1 bg-light-primary dark:bg-dark-primary">
       <Stack.Screen options={{ title: "Animated FAB Example" }} />
 
       <View className="flex-1 items-center justify-center p-5">
         <ThemedText className="mb-4 text-center text-2xl font-bold">
           Animated FAB Demo
         </ThemedText>
-        <Text className="text-light-subtext dark:text-dark-subtext mb-6 text-center text-base">
+        <Text className="mb-6 text-center text-base text-light-subtext dark:text-dark-subtext">
           Tap the floating action button in the bottom right corner to see it
           transform.
         </Text>

@@ -22,7 +22,7 @@ import {
 } from "react-native";
 import { ActionSheetRef } from "react-native-actions-sheet";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import useThemeColors from "../contexts/ThemeColors";
+import { useThemeColors } from "../contexts/ThemeColors";
 
 type CheckoutStep = "shipping" | "payment" | "review" | "success";
 
@@ -185,7 +185,7 @@ const ShippingStep = () => {
       {/* Add Address Modal */}
       <Modal visible={isAddressModalVisible} transparent animationType="fade">
         <View className="flex-1 justify-center bg-black/50 p-4">
-          <View className="bg-light-primary dark:bg-dark-primary rounded-xl p-4 pt-6">
+          <View className="rounded-xl bg-light-primary p-4 pt-6 dark:bg-dark-primary">
             <View className="mb-6 flex-row items-center justify-between">
               <ThemedText className="text-xl font-semibold">
                 Add New Address
@@ -412,8 +412,8 @@ const PaymentStep = () => {
 
       {/* Add Card Modal */}
       <Modal visible={isPaymentModalVisible} transparent animationType="fade">
-        <View className="p-global h-screen flex-1 justify-center bg-black/50">
-          <View className="bg-light-primary dark:bg-dark-primary rounded-xl p-4">
+        <View className="h-screen flex-1 justify-center bg-black/50 p-global">
+          <View className="rounded-xl bg-light-primary p-4 dark:bg-dark-primary">
             <View className="mb-6 flex-row items-center justify-between">
               <ThemedText className="text-xl font-semibold">
                 Add New Card
@@ -467,7 +467,7 @@ const PaymentStep = () => {
               </View>
             </ScrollView>
 
-            <View className="border-light-secondary dark:border-dark-secondary mt-4 flex-row gap-4 border-t pt-2">
+            <View className="mt-4 flex-row gap-4 border-t border-light-secondary pt-2 dark:border-dark-secondary">
               <Button
                 title="Cancel"
                 variant="ghost"
@@ -491,7 +491,7 @@ const ReviewStep = () => {
   const insets = useSafeAreaInsets();
   return (
     <ScrollView className="flex-1">
-      <View className="px-global mb-4 w-full flex-row items-center justify-between">
+      <View className="mb-4 w-full flex-row items-center justify-between px-global">
         <View className="flex-1">
           <ThemedText className="text-2xl font-bold">Review order</ThemedText>
           <ThemedText>Please check your order details</ThemedText>
@@ -511,7 +511,7 @@ const ReviewStep = () => {
       </View>
 
       {/* Products */}
-      <View className="px-global border-light-secondary dark:border-dark-darker border-b-4 pb-7">
+      <View className="border-b-4 border-light-secondary px-global pb-7 dark:border-dark-darker">
         <ThemedText className="mb-4 text-lg font-bold">Products</ThemedText>
         <View className="">
           <View className="mb-4 flex-row items-center">
@@ -546,7 +546,7 @@ const ReviewStep = () => {
       </View>
 
       {/* Shipping Address */}
-      <View className="px-global border-light-secondary dark:border-dark-darker border-b-4 py-7">
+      <View className="border-b-4 border-light-secondary px-global py-7 dark:border-dark-darker">
         <ThemedText className="mb-4 text-lg font-bold">
           Shipping Address
         </ThemedText>
@@ -563,7 +563,7 @@ const ReviewStep = () => {
       </View>
 
       {/* Payment Method */}
-      <View className="px-global border-light-secondary dark:border-dark-darker border-b-4 py-7">
+      <View className="border-b-4 border-light-secondary px-global py-7 dark:border-dark-darker">
         <ThemedText className="mb-4 text-lg font-bold">
           Payment Method
         </ThemedText>
@@ -579,7 +579,7 @@ const ReviewStep = () => {
       </View>
 
       {/* Delivery */}
-      <View className="px-global border-light-secondary dark:border-dark-darker border-b-4 py-7">
+      <View className="border-b-4 border-light-secondary px-global py-7 dark:border-dark-darker">
         <ThemedText className="mb-4 text-lg font-bold">
           Estimated Delivery
         </ThemedText>
@@ -595,7 +595,7 @@ const ReviewStep = () => {
       </View>
 
       {/* Order Summary */}
-      <View className="px-global border-light-secondary dark:border-dark-darker border-b-4 py-7">
+      <View className="border-b-4 border-light-secondary px-global py-7 dark:border-dark-darker">
         <ThemedText className="mb-4 text-lg font-bold">
           Order Summary
         </ThemedText>
@@ -719,7 +719,7 @@ export default CheckoutScreen;
 const SuccessStep = () => {
   return (
     <View className="flex-1">
-      <View className="px-global mb-4 w-full flex-row items-center justify-between">
+      <View className="mb-4 w-full flex-row items-center justify-between px-global">
         <View className="flex-1">
           <ThemedText className="text-2xl font-bold">Order placed</ThemedText>
           <ThemedText>Your order id is #1234567890</ThemedText>
@@ -729,7 +729,7 @@ const SuccessStep = () => {
             animation="zoomInRotate"
             delay={200}
             duration={500}
-            className="border-light-primary dark:border-dark-primary items-center rounded-xl border-2"
+            className="items-center rounded-xl border-2 border-light-primary dark:border-dark-primary"
             playOnlyOnce={true}
           >
             <Image
@@ -741,7 +741,7 @@ const SuccessStep = () => {
             animation="zoomInRotate"
             delay={100}
             duration={500}
-            className="border-light-primary dark:border-dark-primary items-center rounded-xl border-2"
+            className="items-center rounded-xl border-2 border-light-primary dark:border-dark-primary"
             playOnlyOnce={true}
           >
             <Image
@@ -752,7 +752,7 @@ const SuccessStep = () => {
         </View>
       </View>
       {/* Shipping Address */}
-      <View className="px-global border-light-secondary dark:border-dark-darker border-b-4 py-7">
+      <View className="border-b-4 border-light-secondary px-global py-7 dark:border-dark-darker">
         <ThemedText className="mb-4 text-lg font-bold">
           Shipping Address
         </ThemedText>
@@ -769,7 +769,7 @@ const SuccessStep = () => {
       </View>
 
       {/* Payment Method */}
-      <View className="px-global border-light-secondary dark:border-dark-darker border-b-4 py-7">
+      <View className="border-b-4 border-light-secondary px-global py-7 dark:border-dark-darker">
         <ThemedText className="mb-4 text-lg font-bold">
           Payment Method
         </ThemedText>
@@ -785,7 +785,7 @@ const SuccessStep = () => {
       </View>
 
       {/* Delivery */}
-      <View className="px-global border-light-secondary dark:border-dark-darker border-b-4 py-7">
+      <View className="border-b-4 border-light-secondary px-global py-7 dark:border-dark-darker">
         <ThemedText className="mb-4 text-lg font-bold">
           Estimated Delivery
         </ThemedText>

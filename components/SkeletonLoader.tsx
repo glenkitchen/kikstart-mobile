@@ -1,6 +1,6 @@
 import React from "react";
 import { Animated, Dimensions, Easing, View } from "react-native";
-import useThemeColors from "../contexts/ThemeColors";
+import { useThemeColors } from "../contexts/ThemeColors";
 
 const windowWidth = Dimensions.get("window").width;
 
@@ -179,7 +179,7 @@ const SkeletonLoader: React.FC<SkeletonLoaderProps> = ({
 
   return (
     <View
-      className={`bg-light-primary dark:bg-dark-primary flex-1 ${className}`}
+      className={`flex-1 bg-light-primary dark:bg-dark-primary ${className}`}
     >
       {renderContent()}
     </View>

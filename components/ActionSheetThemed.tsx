@@ -4,7 +4,7 @@ import ActionSheet, {
   ActionSheetRef,
 } from "react-native-actions-sheet";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import useThemeColors from "../contexts/ThemeColors";
+import { useThemeColors } from "../contexts/ThemeColors";
 
 interface ActionSheetThemedProps extends ActionSheetProps {}
 

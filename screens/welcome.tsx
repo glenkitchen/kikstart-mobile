@@ -13,7 +13,7 @@ import {
   View,
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import useThemeColors from "../contexts/ThemeColors";
+import { useThemeColors } from "../contexts/ThemeColors";
 const { width } = Dimensions.get("window");
 const windowWidth = Dimensions.get("window").width;
 
@@ -56,9 +56,9 @@ export default function OnboardingScreen() {
     <>
       <View
         style={{ paddingTop: insets.top, paddingBottom: insets.bottom }}
-        className="bg-light-primary dark:bg-dark-primary relative flex-1"
+        className="relative flex-1 bg-light-primary dark:bg-dark-primary"
       >
-        <View className="p-global items-end justify-end">
+        <View className="items-end justify-end p-global">
           <ThemeToggle />
         </View>
         <FlatList
@@ -80,10 +80,10 @@ export default function OnboardingScreen() {
                 source={item.image}
                 style={{ width: windowWidth, height: windowWidth }}
               />
-              <ThemedText className="font-outfit-bold mt-4 text-2xl">
+              <ThemedText className="mt-4 font-outfit-bold text-2xl">
                 {item.title}
               </ThemedText>
-              <Text className="text-light-subtext dark:text-dark-subtext mt-2 w-2/3 text-center">
+              <Text className="mt-2 w-2/3 text-center text-light-subtext dark:text-dark-subtext">
                 {item.description}
               </Text>
             </View>
@@ -96,7 +96,7 @@ export default function OnboardingScreen() {
           {slides.map((_, index) => (
             <View
               key={index}
-              className={`mx-px h-[2px] ${index === currentIndex ? "w-4 bg-black dark:bg-white" : "bg-light-secondary dark:bg-dark-secondary w-4"}`}
+              className={`mx-px h-[2px] ${index === currentIndex ? "w-4 bg-black dark:bg-white" : "w-4 bg-light-secondary dark:bg-dark-secondary"}`}
             />
           ))}
         </View>

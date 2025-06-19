@@ -21,7 +21,7 @@ import {
 } from "react-native";
 import { ActionSheetRef } from "react-native-actions-sheet";
 import { LineChart } from "react-native-chart-kit";
-import useThemeColors from "../../contexts/ThemeColors";
+import { useThemeColors } from "../../contexts/ThemeColors";
 
 const DashboardScreen = () => {
   const colors = useThemeColors();
@@ -60,10 +60,10 @@ const DashboardScreen = () => {
       positive: boolean;
     };
   }) => (
-    <CustomCard rounded="lg" className="p-global flex-1 " border>
+    <CustomCard rounded="lg" className="flex-1 p-global " border>
       <View className="flex-row items-start justify-between">
         <View>
-          <ThemedText className="text-light-subtext dark:text-dark-subtext text-sm">
+          <ThemedText className="text-sm text-light-subtext dark:text-dark-subtext">
             {title}
           </ThemedText>
           <ThemedText className="text-xl font-bold">{value}</ThemedText>

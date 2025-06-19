@@ -17,7 +17,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import useThemeColors from "../../contexts/ThemeColors";
+import { useThemeColors } from "../../contexts/ThemeColors";
 
 const { width } = Dimensions.get("window");
 // Sample payment methods
@@ -125,13 +125,13 @@ export default function PaymentsScreen() {
   };
 
   return (
-    <View className="bg-light-primary dark:bg-dark-primary flex-1">
+    <View className="flex-1 bg-light-primary dark:bg-dark-primary">
       <Header title="Payment Methods" showBackButton />
 
       <ScrollView className="flex-1">
         <Section title="Credit & Debit Cards" className="px-global pt-10" />
 
-        <View className="px-global mt-4">
+        <View className="mt-4 px-global">
           <CardScroller>
             {paymentMethods.map((method) => (
               <CardPreview
@@ -155,18 +155,18 @@ export default function PaymentsScreen() {
           />
         </View>
 
-        <Section title="Digital Wallets" className="px-global mt-14" />
+        <Section title="Digital Wallets" className="mt-14 px-global" />
 
-        <View className="px-global mt-4 pb-8">
+        <View className="mt-4 px-global pb-8">
           {/* Apple Pay - only on iOS */}
 
-          <TouchableOpacity className="border-light-secondary dark:border-dark-secondary flex-row items-center border-b py-4">
-            <View className="bg-light-secondary dark:bg-dark-secondary mr-4 h-12 w-12 items-center justify-center rounded-lg">
+          <TouchableOpacity className="flex-row items-center border-b border-light-secondary py-4 dark:border-dark-secondary">
+            <View className="mr-4 h-12 w-12 items-center justify-center rounded-lg bg-light-secondary dark:bg-dark-secondary">
               <AntDesign name="apple1" size={24} color={colors.icon} />
             </View>
             <View className="flex-1">
               <ThemedText className="font-semibold">Apple Pay</ThemedText>
-              <ThemedText className="text-light-subtext dark:text-dark-subtext text-sm">
+              <ThemedText className="text-sm text-light-subtext dark:text-dark-subtext">
                 Set up Apple Pay for faster checkout
               </ThemedText>
             </View>
@@ -174,13 +174,13 @@ export default function PaymentsScreen() {
           </TouchableOpacity>
 
           {/* Google Pay - available on both platforms */}
-          <TouchableOpacity className="border-light-secondary dark:border-dark-secondary flex-row items-center border-b py-4">
-            <View className="bg-light-secondary dark:bg-dark-secondary mr-4 h-12 w-12 items-center justify-center rounded-lg">
+          <TouchableOpacity className="flex-row items-center border-b border-light-secondary py-4 dark:border-dark-secondary">
+            <View className="mr-4 h-12 w-12 items-center justify-center rounded-lg bg-light-secondary dark:bg-dark-secondary">
               <AntDesign name="google" size={24} color={colors.icon} />
             </View>
             <View className="flex-1">
               <ThemedText className="font-semibold">Google Pay</ThemedText>
-              <ThemedText className="text-light-subtext dark:text-dark-subtext text-sm">
+              <ThemedText className="text-sm text-light-subtext dark:text-dark-subtext">
                 Set up Google Pay for faster checkout
               </ThemedText>
             </View>
@@ -191,8 +191,8 @@ export default function PaymentsScreen() {
 
       {/* Add Card Modal */}
       <Modal visible={isModalVisible} transparent animationType="fade">
-        <View className="p-global h-screen flex-1 justify-center bg-black/50">
-          <View className="bg-light-primary dark:bg-dark-primary rounded-xl p-4">
+        <View className="h-screen flex-1 justify-center bg-black/50 p-global">
+          <View className="rounded-xl bg-light-primary p-4 dark:bg-dark-primary">
             <View className="mb-6 flex-row items-center justify-between">
               <ThemedText className="text-xl font-semibold">
                 Add New Card
@@ -246,7 +246,7 @@ export default function PaymentsScreen() {
               </View>
             </ScrollView>
 
-            <View className="border-light-secondary dark:border-dark-secondary mt-4 flex-row gap-4 border-t pt-2">
+            <View className="mt-4 flex-row gap-4 border-t border-light-secondary pt-2 dark:border-dark-secondary">
               <Button
                 title="Cancel"
                 variant="ghost"

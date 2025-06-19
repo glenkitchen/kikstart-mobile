@@ -4,7 +4,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { Alert, BackHandler, Pressable, Text, View } from "react-native";
 import ActionSheet, { ActionSheetRef } from "react-native-actions-sheet";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import useThemeColors from "../../contexts/ThemeColors";
+import { useThemeColors } from "../../contexts/ThemeColors";
 
 import Input from "@/components/forms/Input";
 import Select from "@/components/forms/Select";
@@ -78,7 +78,7 @@ const AddServiceFlow = () => {
   }, [currentStepIndex]);
 
   return (
-    <View className="bg-light-primary dark:bg-dark-primary flex-1">
+    <View className="flex-1 bg-light-primary dark:bg-dark-primary">
       <View className="absolute left-4 top-4 z-10">
         <Pressable
           onPress={handleDeleteProduct}
@@ -124,7 +124,7 @@ const AddServiceFlow = () => {
             <ThemedText className="text-2xl font-medium">
               Basic information
             </ThemedText>
-            <ThemedText className="text-light-subtext dark:text-dark-subtext mb-4 text-sm">
+            <ThemedText className="mb-4 text-sm text-light-subtext dark:text-dark-subtext">
               Describe your product in few words and add photos
             </ThemedText>
 
@@ -158,7 +158,7 @@ const AddServiceFlow = () => {
         <Step title="Pricing">
           <ThemedScroller className="px-4 pt-6">
             <ThemedText className="text-2xl font-medium">Pricing</ThemedText>
-            <ThemedText className="text-light-subtext dark:text-dark-subtext mb-4 text-sm">
+            <ThemedText className="mb-4 text-sm text-light-subtext dark:text-dark-subtext">
               Set a base price of the product
             </ThemedText>
             <Input
@@ -172,7 +172,7 @@ const AddServiceFlow = () => {
                 <ThemedText className=" text-xl font-medium">
                   Options
                 </ThemedText>
-                <ThemedText className="text-light-subtext dark:text-dark-subtext mb-4  text-sm">
+                <ThemedText className="mb-4 text-sm text-light-subtext  dark:text-dark-subtext">
                   Sizes, colors, duration
                 </ThemedText>
               </View>
@@ -228,7 +228,7 @@ export const Suggestion: React.FC<SuggestionProps> = ({ isOptions }) => {
     <>
       <Pressable
         onPress={handlePresentModal}
-        className="bg-light-secondary dark:bg-dark-secondary flex h-[40px] w-[40px] flex-row items-center justify-center rounded-full"
+        className="flex h-[40px] w-[40px] flex-row items-center justify-center rounded-full bg-light-secondary dark:bg-dark-secondary"
       >
         <Icon name="Search" size={20} />
       </Pressable>
@@ -330,13 +330,13 @@ export const SuggestionItem: React.FC<SuggestionItemProps> = ({
   return (
     <Pressable
       onPress={() => {}}
-      className="border-light-secondary dark:border-dark-secondary flex flex-row items-center border-b py-5"
+      className="flex flex-row items-center border-b border-light-secondary py-5 dark:border-dark-secondary"
     >
       <View className="flex-1 pr-4">
         <ThemedText className="text-base font-semibold">{title}</ThemedText>
         <ThemedText
           numberOfLines={1}
-          className="text-light-subtext dark:text-dark-subtext text-xs"
+          className="text-xs text-light-subtext dark:text-dark-subtext"
         >
           {description}
         </ThemedText>

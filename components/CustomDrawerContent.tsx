@@ -10,6 +10,7 @@ import ThemedScroller from "./ThemeScroller";
 
 export default function CustomDrawerContent() {
   const insets = useSafeAreaInsets();
+
   return (
     <BlurView
       style={{
@@ -37,7 +38,7 @@ export default function CustomDrawerContent() {
           </View>
           <View className="ml-0">
             <ThemedText className="text-lg font-bold">John Dogerthy</ThemedText>
-            <ThemedText className="text-light-subtext dark:text-dark-subtext mb-4 text-sm">
+            <ThemedText className="mb-4 text-sm text-light-subtext dark:text-dark-subtext">
               johndoe0294
             </ThemedText>
           </View>
@@ -60,7 +61,7 @@ export default function CustomDrawerContent() {
           />
           <NavItem href="/screens/login" icon="ArrowLeft" label="Sign out" />
         </View>
-        <ThemedText className="text-light-subtext dark:text-dark-subtext text-sm">
+        <ThemedText className="text-sm text-light-subtext dark:text-dark-subtext">
           Version 0.0.12
         </ThemedText>
       </ThemedScroller>

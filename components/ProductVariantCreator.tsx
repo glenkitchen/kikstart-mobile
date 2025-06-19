@@ -10,7 +10,7 @@ import {
   TextInput,
   View,
 } from "react-native";
-import useThemeColors from "../contexts/ThemeColors";
+import { useThemeColors } from "../contexts/ThemeColors";
 import { Button } from "./Button";
 import Input from "./forms/Input";
 import Icon from "./Icon";
@@ -241,8 +241,8 @@ const ProductVariantCreator: React.FC<ProductVariantCreatorProps> = ({
       )}
 
       <Modal visible={modalVisible} transparent animationType="slide">
-        <SafeAreaView className="bg-light-primary dark:bg-dark-primary flex-1">
-          <View className="bg-light-primary dark:bg-dark-primary w-full flex-1">
+        <SafeAreaView className="flex-1 bg-light-primary dark:bg-dark-primary">
+          <View className="w-full flex-1 bg-light-primary dark:bg-dark-primary">
             <View className="w-full flex-row justify-between px-4">
               <Pressable
                 onPress={() => setModalVisible(false)}
@@ -297,7 +297,7 @@ const ProductVariantCreator: React.FC<ProductVariantCreatorProps> = ({
                 <ThemedText className="mt-8 text-xl font-medium">
                   Values
                 </ThemedText>
-                <ThemedText className="text-light-subtext dark:text-dark-subtext w-full text-sm">
+                <ThemedText className="w-full text-sm text-light-subtext dark:text-dark-subtext">
                   Black, large, hours, etc
                 </ThemedText>
                 <FlatList

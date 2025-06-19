@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   ViewStyle,
 } from "react-native";
-import useThemeColors from "../contexts/ThemeColors";
+import { useThemeColors } from "../contexts/ThemeColors";
 import Icon, { IconName } from "./Icon";
 import ThemedText from "./ThemedText";
 
@@ -69,7 +69,7 @@ const FloatingButton: React.FC<FloatingButtonProps> = ({
   const buttonContent = (
     <TouchableOpacity
       onPress={onPress}
-      className="bg-highlight flex-row items-center rounded-full px-4 py-3 shadow-lg"
+      className="flex-row items-center rounded-full bg-highlight px-4 py-3 shadow-lg"
       style={[styles.button, style]}
     >
       <Icon name={icon} size={20} color="white" />

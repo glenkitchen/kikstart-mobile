@@ -3,7 +3,7 @@ import * as NavigationBar from "expo-navigation-bar";
 import React from "react";
 import { Platform, Pressable, Text, View } from "react-native";
 import ActionSheet, { ActionSheetRef } from "react-native-actions-sheet";
-import useThemeColors from "../contexts/ThemeColors";
+import { useThemeColors } from "../contexts/ThemeColors";
 import { useTheme } from "../contexts/ThemeContext";
 
 interface ConfirmationModalProps {
@@ -66,14 +66,14 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
     >
       <View className="p-8 pb-14">
         <ThemedText className="mb-2 text-xl font-bold">{title}</ThemedText>
-        <ThemedText className="text-light-subtext dark:text-dark-subtext mb-6">
+        <ThemedText className="mb-6 text-light-subtext dark:text-dark-subtext">
           {message}
         </ThemedText>
 
         <View className="flex-row justify-between space-x-3">
           <Pressable
             onPress={handleCancel}
-            className="bg-light-secondary dark:bg-dark-secondary flex-1 items-center rounded-lg px-4 py-3"
+            className="flex-1 items-center rounded-lg bg-light-secondary px-4 py-3 dark:bg-dark-secondary"
           >
             <ThemedText>{cancelText}</ThemedText>
           </Pressable>

@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { Animated, StyleSheet, Text, View } from "react-native";
-import useThemeColors from "../contexts/ThemeColors";
+import { useThemeColors } from "../contexts/ThemeColors";
 
 type ToastType = "success" | "error" | "info" | "warning";
 
@@ -70,12 +70,12 @@ const Toast: React.FC<ToastProps> = ({
         },
       ]}
     >
-      <View className="bg-dark-primary dark:bg-light-primary flex-row items-center justify-center rounded-xl py-6">
+      <View className="flex-row items-center justify-center rounded-xl bg-dark-primary py-6 dark:bg-light-primary">
         <View
           className="mr-2 h-2 w-2 rounded-full"
           style={{ backgroundColor: getBackgroundColor() }}
         />
-        <Text className="dark:text-dark-primary text-white">{message}</Text>
+        <Text className="text-white dark:text-dark-primary">{message}</Text>
       </View>
     </Animated.View>
   );

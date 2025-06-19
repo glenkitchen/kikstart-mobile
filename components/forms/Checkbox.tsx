@@ -1,6 +1,6 @@
 import React from "react";
 import { Pressable, View } from "react-native";
-import useThemeColors from "../../contexts/ThemeColors";
+import { useThemeColors } from "../../contexts/ThemeColors";
 import Icon from "../Icon";
 import ThemedText from "../ThemedText";
 
@@ -46,7 +46,7 @@ const Checkbox: React.FC<CheckboxProps> = ({
         `}
         >
           {isChecked && (
-            <View className="bg-highlight border-light-primary dark:border-dark-primary h-full w-full items-center justify-center rounded border-[2px]">
+            <View className="h-full w-full items-center justify-center rounded border-[2px] border-light-primary bg-highlight dark:border-dark-primary">
               <Icon name="Check" size={14} color="#fff" />
             </View>
           )}

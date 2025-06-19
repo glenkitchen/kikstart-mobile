@@ -8,7 +8,7 @@ import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { router } from "expo-router";
 import React, { useState } from "react";
 import { Image, TouchableOpacity, View } from "react-native";
-import useThemeColors from "../contexts/ThemeColors";
+import { useThemeColors } from "../contexts/ThemeColors";
 
 interface ReviewScreenProps {
   product: {
@@ -82,7 +82,7 @@ const ReviewScreen = () => {
         <View className="mb-0 flex-col items-center">
           <Image
             source={product.image}
-            className="bg-light-secondary dark:bg-dark-secondary h-20 w-14 rounded-lg"
+            className="h-20 w-14 rounded-lg bg-light-secondary dark:bg-dark-secondary"
           />
           <View className="flex-1 items-center justify-center">
             <ThemedText className="mt-global text-base font-bold">

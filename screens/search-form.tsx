@@ -7,7 +7,7 @@ import ListItem from "@/components/layout/ListItem";
 import { Link, router } from "expo-router";
 import React, { JSX, useEffect, useRef, useState } from "react";
 import { Image, Pressable, TextInput, View } from "react-native";
-import useThemeColors from "../contexts/ThemeColors";
+import { useThemeColors } from "../contexts/ThemeColors";
 const SearchScreen = () => {
   const colors = useThemeColors();
   const [searchQuery, setSearchQuery] = useState("");
@@ -72,8 +72,8 @@ const SearchScreen = () => {
     <>
       <Header
         middleComponent={
-          <View className="bg-light-primary dark:bg-dark-primary flex-1">
-            <View className="bg-light-primary dark:bg-dark-primary relative rounded-lg border border-black dark:border-white">
+          <View className="flex-1 bg-light-primary dark:bg-dark-primary">
+            <View className="relative rounded-lg border border-black bg-light-primary dark:border-white dark:bg-dark-primary">
               <Icon
                 name="ArrowLeft"
                 onPress={() => router.back()}
@@ -148,7 +148,7 @@ const SearchSection = ({ title, data, renderItem }: SearchSectionProps) => (
         <ThemedText className="mb-2 text-center text-lg font-bold">
           No products found
         </ThemedText>
-        <ThemedText className="text-light-subtext dark:text-dark-subtext text-center">
+        <ThemedText className="text-center text-light-subtext dark:text-dark-subtext">
           Try adjusting your search terms.
         </ThemedText>
       </View>
@@ -169,7 +169,7 @@ const Product = ({ id, image, name, price }: ProductProps) => (
       leading={
         <Image
           source={image}
-          className="bg-light-secondary dark:bg-dark-secondary h-16 w-12 rounded-md"
+          className="h-16 w-12 rounded-md bg-light-secondary dark:bg-dark-secondary"
         />
       }
       title={name}

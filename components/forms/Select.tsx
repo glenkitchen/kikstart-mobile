@@ -12,7 +12,7 @@ import {
   ViewStyle,
 } from "react-native";
 import ActionSheet, { ActionSheetRef } from "react-native-actions-sheet";
-import useThemeColors from "../../contexts/ThemeColors";
+import { useThemeColors } from "../../contexts/ThemeColors";
 import { useTheme } from "../../contexts/ThemeContext";
 import { InputVariant } from "./Input";
 
@@ -208,12 +208,12 @@ const Select: React.FC<SelectProps> = ({
       <View className={`mb-4 ${className || ""}`} style={style}>
         <View className="relative">
           <Pressable
-            className="bg-light-primary dark:bg-dark-primary z-40 px-0"
+            className="z-40 bg-light-primary px-0 dark:bg-dark-primary"
             onPress={handlePress}
           >
             <Animated.Text
               style={[underlinedLabelStyle]}
-              className="bg-light-primary dark:bg-dark-primary absolute z-50 text-black dark:text-white"
+              className="absolute z-50 bg-light-primary text-black dark:bg-dark-primary dark:text-white"
             >
               {label}
             </Animated.Text>
@@ -247,12 +247,12 @@ const Select: React.FC<SelectProps> = ({
     <View className={`mb-4 ${className || ""}`} style={style}>
       <View className="relative">
         <Pressable
-          className="bg-light-primary dark:bg-dark-primary z-40 px-1"
+          className="z-40 bg-light-primary px-1 dark:bg-dark-primary"
           onPress={handlePress}
         >
           <Animated.Text
             style={[labelStyle]}
-            className="bg-light-primary dark:bg-dark-primary absolute z-50 px-1 text-black dark:text-white"
+            className="absolute z-50 bg-light-primary px-1 text-black dark:bg-dark-primary dark:text-white"
           >
             {label}
           </Animated.Text>

@@ -6,7 +6,7 @@ import {
   View,
   ViewStyle,
 } from "react-native";
-import useThemeColors from "../../contexts/ThemeColors";
+import { useThemeColors } from "../../contexts/ThemeColors";
 import Icon, { IconName } from "../Icon";
 import ThemedText from "../ThemedText";
 
@@ -82,7 +82,7 @@ const Switch: React.FC<SwitchProps> = ({
           <ThemedText className="text-base font-medium">{label}</ThemedText>
         )}
         {description && (
-          <ThemedText className="text-light-subtext dark:text-dark-subtext text-sm">
+          <ThemedText className="text-sm text-light-subtext dark:text-dark-subtext">
             {description}
           </ThemedText>
         )}
@@ -103,7 +103,7 @@ const Switch: React.FC<SwitchProps> = ({
               },
             ],
           }}
-          className="dark:bg-dark-primary my-0.5 h-5 w-5 rounded-full bg-white shadow-sm"
+          className="my-0.5 h-5 w-5 rounded-full bg-white shadow-sm dark:bg-dark-primary"
         />
       </View>
     </TouchableOpacity>

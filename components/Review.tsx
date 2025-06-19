@@ -1,6 +1,6 @@
 import React from "react";
 import { View, ViewStyle } from "react-native";
-import useThemeColors from "../contexts/ThemeColors";
+import { useThemeColors } from "../contexts/ThemeColors";
 import Avatar from "./Avatar";
 import Icon from "./Icon";
 import ThemedText from "./ThemedText";
@@ -63,7 +63,7 @@ const Review: React.FC<ReviewProps> = ({
           )}
           <View className="mb-2 flex-row items-center justify-between">
             {renderStars()}
-            <ThemedText className="text-light-subtext dark:text-dark-subtext text-sm">
+            <ThemedText className="text-sm text-light-subtext dark:text-dark-subtext">
               {date}
             </ThemedText>
           </View>

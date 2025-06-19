@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import Icon, { IconName } from "../Icon";
 
-import useThemeColors from "../../contexts/ThemeColors";
+import { useThemeColors } from "../../contexts/ThemeColors";
 import ThemedText from "../ThemedText";
 
 interface CustomTextInputProps extends TextInputProps {
@@ -104,12 +104,12 @@ const TextInput: React.FC<CustomTextInputProps> = ({
     <View className={`mb-global ${containerClassName}`}>
       <View className="relative">
         <Pressable
-          className="bg-light-primary dark:bg-dark-primary z-40 px-1"
+          className="z-40 bg-light-primary px-1 dark:bg-dark-primary"
           onPress={() => inputRef.current?.focus()}
         >
           <Animated.Text
             style={[labelStyle]}
-            className="bg-light-primary dark:bg-dark-primary absolute z-50 px-1 text-black dark:text-white"
+            className="absolute z-50 bg-light-primary px-1 text-black dark:bg-dark-primary dark:text-white"
           >
             {label}
           </Animated.Text>
