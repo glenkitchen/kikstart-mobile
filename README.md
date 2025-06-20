@@ -4,7 +4,7 @@
 
 ```bash
 # Create application
-bunx create-expo-app
+bunx create-expo
 
 ## Reset project
 bun run reset-project
@@ -16,30 +16,27 @@ bun run reset-project
 
 ```bash
 # Install
-bunx expo install expo-asset
-bunx expo install expo-audio
-bunx expo install expo-camera
-bunx expo install expo-checkbox
-bunx expo install expo-dev-client
-bunx expo install expo-file-system
-bunx expo install expo-image-picker
-bunx expo install expo-linear-gradient
-bunx expo install expo-location
-bunx expo install expo-maps
-bunx expo install expo-media-library
-bunx expo install expo-navigation-bar
-bunx expo install expo-notifications
-bunx expo install expo-secure-store
-bunx expo install expo-sharing
-bunx expo install expo-updates
-bunx expo install expo-video
+bun expo install expo-asset
+bun expo install expo-audio
+bun expo install expo-camera
+bun expo install expo-checkbox
+bun expo install expo-dev-client
+bun expo install expo-file-system
+bun expo install expo-image-picker
+bun expo install expo-linear-gradient
+bun expo install expo-location
+bun expo install expo-maps
+bun expo install expo-media-library
+bun expo install expo-navigation-bar
+bun expo install expo-notifications
+bun expo install expo-secure-store
+bun expo install expo-sharing
+bun expo install expo-updates
+bun expo install expo-video
 
 # Run Expo doctor
 bunx expo-doctor
 
-# Run native build
-bunx expo prebuild
-bunx expo run:android -d
 ```
 
 - Install template dependencies.
@@ -47,33 +44,33 @@ bunx expo run:android -d
 Use Cursor to extract dependencies. (Compare `package.json`)
 
 ```bash
-bunx expo install @expo-google-fonts/outfit
-bunx expo install @react-native-community/datetimepicker
-bunx expo install @react-native-community/slider
-bunx expo install @react-native-community/viewpager
-bunx expo install @react-navigation/drawer
-bunx expo install babel-preset-expo
-bunx expo install clsx
-bunx expo install expo-asset
-bunx expo install expo-linear-gradient
-bunx expo install expo-location
-bunx expo install expo-navigation-bar
-bunx expo install expo-notifications
-bunx expo install expo-sharing
-bunx expo install expo-updates
-bunx expo install lottie-react-native
-bunx expo install lucide-react-native
-bunx expo install react-native-actions-sheet
-bunx expo install react-native-calendars
-bunx expo install react-native-chart-kit
-bunx expo install react-native-css-interop
-bunx expo install react-native-maps
-bunx expo install react-native-modal
-bunx expo install react-native-modal-datetime-picker
-bunx expo install react-native-navigation-bar-color
-bunx expo install react-native-svg
-bunx expo install tailwind-merge
-bunx expo install victory-native
+bun expo install @expo-google-fonts/outfit
+bun expo install @react-native-community/datetimepicker
+bun expo install @react-native-community/slider
+bun expo install @react-native-community/viewpager
+bun expo install @react-navigation/drawer
+bun expo install babel-preset-expo
+bun expo install clsx
+bun expo install expo-asset
+bun expo install expo-linear-gradient
+bun expo install expo-location
+bun expo install expo-navigation-bar
+bun expo install expo-notifications
+bun expo install expo-sharing
+bun expo install expo-updates
+bun expo install lottie-react-native
+bun expo install lucide-react-native
+bun expo install react-native-actions-sheet
+bun expo install react-native-calendars
+bun expo install react-native-chart-kit
+bun expo install react-native-css-interop
+bun expo install react-native-maps
+bun expo install react-native-modal
+bun expo install react-native-modal-datetime-picker
+bun expo install react-native-navigation-bar-color
+bun expo install react-native-svg
+bun expo install tailwind-merge
+bun expo install victory-native
 ```
 
 - Copy template components and screens

@@ -12,6 +12,7 @@ const ActionSheetThemed = forwardRef<ActionSheetRef, ActionSheetThemedProps>(
   ({ containerStyle, ...props }, ref) => {
     const colors = useThemeColors();
     const insets = useSafeAreaInsets();
+
     return (
       <ActionSheet
         {...props}

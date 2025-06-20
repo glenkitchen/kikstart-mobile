@@ -5,19 +5,12 @@ import Header from "@/components/Header";
 import Grid from "@/components/layout/Grid";
 import { Section } from "@/components/layout/Section";
 import React from "react";
-import {
-  Dimensions,
-  ImageBackground,
-  Pressable,
-  Text,
-  View,
-} from "react-native";
+import { ImageBackground, Pressable, Text, View } from "react-native";
 
 import AnimatedView from "@/components/AnimatedView";
 import ThemeScroller from "@/components/ThemeScroller";
 import { LinearGradient } from "expo-linear-gradient";
 
-const { width } = Dimensions.get("window");
 // Sample product data
 const products = [
   {

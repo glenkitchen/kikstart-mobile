@@ -55,7 +55,7 @@ export default function ProfileScreen() {
             title="Help"
             description="Contact support"
             icon="HelpCircle"
-            href="/screens/help"
+            href="/(screens)/help"
           />
         </View>
       </ThemedScroller>

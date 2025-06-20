@@ -1,8 +1,9 @@
+
 import AnimatedView from "@/components/AnimatedView";
 import { Button } from "@/components/Button";
 import Header from "@/components/Header";
 import Icon from "@/components/Icon";
-import Divider from "@/components/layout/Divider";
+import { Divider } from "@/components/layout/Divider";
 import { Section } from "@/components/layout/Section";
 import ThemedText from "@/components/ThemedText";
 import ThemedFooter from "@/components/ThemeFooter";
@@ -232,7 +233,7 @@ export default function OrderDetailScreen() {
 
   if (!order) {
     return (
-      <View className="bg-light-primary dark:bg-dark-primary flex-1">
+      <View className="flex-1 bg-light-primary dark:bg-dark-primary">
         <Header
           title="Order Details"
           showBackButton
@@ -242,13 +243,14 @@ export default function OrderDetailScreen() {
           <Icon
             name="ShoppingBag"
             size={64}
-            className="text-light-secondary dark:text-dark-secondary mb-4"
+            className="mb-4 text-light-secondary dark:text-dark-secondary"
           />
           <ThemedText className="mb-2 text-xl font-bold">
             Order not found
           </ThemedText>
-          <ThemedText className="text-light-subtext dark:text-dark-subtext text-center">
-            The order you're looking for doesn't exist or has been deleted.
+          <ThemedText className="text-center text-light-subtext dark:text-dark-subtext">
+            The order you&apos;re looking for doesn&apos;t exist or has been
+            deleted.
           </ThemedText>
         </View>
       </View>
@@ -258,7 +260,7 @@ export default function OrderDetailScreen() {
   const statusDetails = getStatusDetails(order.status);
 
   return (
-    <View className="bg-light-primary dark:bg-dark-primary flex-1">
+    <View className="flex-1 bg-light-primary dark:bg-dark-primary">
       <Header
         showBackButton
         //onBackPress={isFromCheckout ? handleBackPress : undefined}
@@ -293,14 +295,14 @@ export default function OrderDetailScreen() {
             </View>
           </View>
 
-          <Divider className="bg-light-secondary dark:bg-dark-darker h-1" />
+          <Divider className="h-1 bg-light-secondary dark:bg-dark-darker" />
 
           {/* Order items */}
           <Section titleSize="lg" className="px-global pt-4">
             {order.items.map((item, index) => (
               <View
                 key={item.id}
-                className={`flex-row py-3 ${index !== order.items.length - 1 ? "border-light-secondary dark:border-dark-secondary border-b" : ""}`}
+                className={`flex-row py-3 ${index !== order.items.length - 1 ? "border-b border-light-secondary dark:border-dark-secondary" : ""}`}
               >
                 <Image
                   source={item.image}
@@ -313,7 +315,7 @@ export default function OrderDetailScreen() {
                   </ThemedText>
 
                   {(item.size || item.color) && (
-                    <ThemedText className="text-light-subtext dark:text-dark-subtext mt-px text-sm">
+                    <ThemedText className="mt-px text-sm text-light-subtext dark:text-dark-subtext">
                       {item.size && `Size: ${item.size}`}
                       {item.size && item.color && ` • `}
                       {item.color && `Color: ${item.color}`}
@@ -321,7 +323,7 @@ export default function OrderDetailScreen() {
                   )}
 
                   <View className="mt-2 flex-row items-center justify-between">
-                    <ThemedText className="text-light-subtext dark:text-dark-subtext text-sm">
+                    <ThemedText className="text-sm text-light-subtext dark:text-dark-subtext">
                       Qty: {item.quantity}
                     </ThemedText>
                     <ThemedText className="font-bold">{item.price}</ThemedText>
@@ -331,7 +333,7 @@ export default function OrderDetailScreen() {
             ))}
           </Section>
 
-          <Divider className="bg-light-secondary dark:bg-dark-darker mt-4 h-1" />
+          <Divider className="mt-4 h-1 bg-light-secondary dark:bg-dark-darker" />
 
           {/* Order summary */}
           <Section
@@ -383,7 +385,7 @@ export default function OrderDetailScreen() {
             </View>
           </Section>
 
-          <Divider className="bg-light-secondary dark:bg-dark-darker mt-4 h-1" />
+          <Divider className="mt-4 h-1 bg-light-secondary dark:bg-dark-darker" />
 
           {/* Shipping info */}
           <Section
@@ -395,7 +397,7 @@ export default function OrderDetailScreen() {
               <ThemedText className="font-semibold">
                 {order.shippingAddress.name}
               </ThemedText>
-              <ThemedText className="text-light-subtext dark:text-dark-subtext mt-1">
+              <ThemedText className="mt-1 text-light-subtext dark:text-dark-subtext">
                 {order.shippingAddress.street}
               </ThemedText>
               <ThemedText className="text-light-subtext dark:text-dark-subtext">
@@ -404,13 +406,13 @@ export default function OrderDetailScreen() {
               <ThemedText className="text-light-subtext dark:text-dark-subtext">
                 {order.shippingAddress.country}
               </ThemedText>
-              <ThemedText className="text-light-subtext dark:text-dark-subtext mt-1">
+              <ThemedText className="mt-1 text-light-subtext dark:text-dark-subtext">
                 {order.shippingAddress.phone}
               </ThemedText>
             </View>
           </Section>
 
-          <Divider className="bg-light-secondary dark:bg-dark-darker mt-4 h-1" />
+          <Divider className="mt-4 h-1 bg-light-secondary dark:bg-dark-darker" />
 
           {/* Payment method */}
           <Section
@@ -434,7 +436,7 @@ export default function OrderDetailScreen() {
             </View>
           </Section>
 
-          <Divider className="bg-light-secondary dark:bg-dark-darker mt-4 h-1" />
+          <Divider className="mt-4 h-1 bg-light-secondary dark:bg-dark-darker" />
 
           {/* Order timeline */}
           <Section
@@ -453,14 +455,14 @@ export default function OrderDetailScreen() {
                     order.timeline.shipped ||
                     order.timeline.delivered ||
                     order.timeline.cancelled) && (
-                    <View className="bg-light-subtext dark:bg-dark-subtext mt-1 h-12 w-px" />
+                    <View className="mt-1 h-12 w-px bg-light-subtext dark:bg-dark-subtext" />
                   )}
                 </View>
                 <View>
                   <ThemedText className="font-semibold">
                     Order Placed
                   </ThemedText>
-                  <ThemedText className="text-light-subtext dark:text-dark-subtext mt-1 text-sm">
+                  <ThemedText className="mt-1 text-sm text-light-subtext dark:text-dark-subtext">
                     {order.timeline.ordered}
                   </ThemedText>
                 </View>
@@ -474,14 +476,14 @@ export default function OrderDetailScreen() {
                       <Icon name="Check" size={16} color="white" />
                     </View>
                     {(order.timeline.shipped || order.timeline.delivered) && (
-                      <View className="bg-light-subtext dark:bg-dark-subtext mt-1 h-12 w-px" />
+                      <View className="mt-1 h-12 w-px bg-light-subtext dark:bg-dark-subtext" />
                     )}
                   </View>
                   <View>
                     <ThemedText className="font-semibold">
                       Order Processed
                     </ThemedText>
-                    <ThemedText className="text-light-subtext dark:text-dark-subtext mt-1 text-sm">
+                    <ThemedText className="mt-1 text-sm text-light-subtext dark:text-dark-subtext">
                       {order.timeline.processed}
                     </ThemedText>
                   </View>
@@ -496,14 +498,14 @@ export default function OrderDetailScreen() {
                       <Icon name="Truck" size={16} color="white" />
                     </View>
                     {order.timeline.delivered && (
-                      <View className="bg-light-subtext dark:bg-dark-subtext mt-1 h-12 w-px" />
+                      <View className="mt-1 h-12 w-px bg-light-subtext dark:bg-dark-subtext" />
                     )}
                   </View>
                   <View>
                     <ThemedText className="font-semibold">
                       Order Shipped
                     </ThemedText>
-                    <ThemedText className="text-light-subtext dark:text-dark-subtext mt-1 text-sm">
+                    <ThemedText className="mt-1 text-sm text-light-subtext dark:text-dark-subtext">
                       {order.timeline.shipped}
                     </ThemedText>
                   </View>
@@ -522,7 +524,7 @@ export default function OrderDetailScreen() {
                     <ThemedText className="font-semibold">
                       Order Delivered
                     </ThemedText>
-                    <ThemedText className="text-light-subtext dark:text-dark-subtext mt-1 text-sm">
+                    <ThemedText className="mt-1 text-sm text-light-subtext dark:text-dark-subtext">
                       {order.timeline.delivered}
                     </ThemedText>
                   </View>
@@ -541,7 +543,7 @@ export default function OrderDetailScreen() {
                     <ThemedText className="font-semibold">
                       Order Cancelled
                     </ThemedText>
-                    <ThemedText className="text-light-subtext dark:text-dark-subtext mt-1 text-sm">
+                    <ThemedText className="mt-1 text-sm text-light-subtext dark:text-dark-subtext">
                       {order.timeline.cancelled}
                     </ThemedText>
                   </View>

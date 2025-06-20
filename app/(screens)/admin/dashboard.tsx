@@ -5,7 +5,7 @@ import { CardScroller } from "@/components/CardScroller";
 import CustomCard from "@/components/CustomCard";
 import Header from "@/components/Header";
 import Icon from "@/components/Icon";
-import List from "@/components/layout/List";
+import { List } from "@/components/layout/List";
 import ListItem from "@/components/layout/ListItem";
 import { Section } from "@/components/layout/Section";
 import ThemedText from "@/components/ThemedText";
