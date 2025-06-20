@@ -45,7 +45,8 @@
       "expo-maps",
       "expo-secure-store",
       "expo-video",
-      "expo-asset"
+      "expo-asset",
+      "expo-web-browser"
     ],
     "experiments": {
       "typedRoutes": true

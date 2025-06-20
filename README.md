@@ -46,31 +46,13 @@ Use Cursor to extract dependencies. (Compare `package.json`)
 ```bash
 bun expo install @expo-google-fonts/outfit
 bun expo install @react-native-community/datetimepicker
-bun expo install @react-native-community/slider
-bun expo install @react-native-community/viewpager
 bun expo install @react-navigation/drawer
 bun expo install babel-preset-expo
 bun expo install clsx
-bun expo install expo-asset
-bun expo install expo-linear-gradient
-bun expo install expo-location
-bun expo install expo-navigation-bar
-bun expo install expo-notifications
-bun expo install expo-sharing
-bun expo install expo-updates
-bun expo install lottie-react-native
 bun expo install lucide-react-native
 bun expo install react-native-actions-sheet
-bun expo install react-native-calendars
-bun expo install react-native-chart-kit
-bun expo install react-native-css-interop
-bun expo install react-native-maps
-bun expo install react-native-modal
-bun expo install react-native-modal-datetime-picker
-bun expo install react-native-navigation-bar-color
 bun expo install react-native-svg
 bun expo install tailwind-merge
-bun expo install victory-native
 ```
 
 - Copy template components and screens

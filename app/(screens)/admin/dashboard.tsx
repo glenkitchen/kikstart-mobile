@@ -11,42 +11,35 @@ import { Section } from "@/components/layout/Section";
 import ThemedText from "@/components/ThemedText";
 import ThemedScroller from "@/components/ThemeScroller";
 import { useThemeColors } from "@/contexts/ThemeColors";
-import React, { useState } from "react";
-import {
-  Dimensions,
-  Image,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import React from "react";
+import { Image, TouchableOpacity, View } from "react-native";
 import { ActionSheetRef } from "react-native-actions-sheet";
-import { LineChart } from "react-native-chart-kit";
+import { LineChart } from "react-native-gifted-charts";
 
 const DashboardScreen = () => {
   const colors = useThemeColors();
-  const screenWidth = Dimensions.get("window").width;
-  const actionSheetRef = React.useRef<ActionSheetRef>(null);
-  const [tooltipVisible, setTooltipVisible] = useState(false);
-  const [tooltipData, setTooltipData] = useState({ value: 0, x: 0, y: 0 });
-  // Mock data for charts
-  const salesData = {
-    labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
-    datasets: [
-      {
-        data: [13000, 16500, 14750, 19000, 18000, 21000, 22000],
-      },
-    ],
-  };
 
-  const visitsData = {
-    labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
-    datasets: [
-      {
-        data: [500, 800, 600, 1000, 900, 1200, 1100],
-      },
-    ],
-  };
+  const actionSheetRef = React.useRef<ActionSheetRef>(null);
+  // Mock data for charts
+  const salesData = [
+    { value: 13000, label: "Mon" },
+    { value: 16500, label: "Tue" },
+    { value: 14750, label: "Wed" },
+    { value: 19000, label: "Thu" },
+    { value: 18000, label: "Fri" },
+    { value: 21000, label: "Sat" },
+    { value: 22000, label: "Sun" },
+  ];
+
+  const visitsData = [
+    { value: 500, label: "Mon" },
+    { value: 800, label: "Tue" },
+    { value: 600, label: "Wed" },
+    { value: 1000, label: "Thu" },
+    { value: 900, label: "Fri" },
+    { value: 1200, label: "Sat" },
+    { value: 1100, label: "Sun" },
+  ];
 
   const StatCard = ({
     title,
@@ -95,104 +88,60 @@ const DashboardScreen = () => {
     data: any;
     color: string;
   }) => (
-    <CustomCard border rounded="lg" className=" mt-4 pt-4">
+    <CustomCard border rounded="lg" className=" mt-4 p-4">
       <ThemedText className="text-lg font-semibold">{title}</ThemedText>
-      <View className="-ml-[50px]">
+      <View className="py-4">
         <LineChart
+          areaChart
+          startFillColor={color}
+          endFillColor={color}
+          startOpacity={0.4}
+          endOpacity={0.1}
+          rulesColor={colors.border}
+          rulesType="SOLID"
+          noOfSections={4}
+          yAxisThickness={0}
+          hideYAxisText
           data={data}
-          width={screenWidth - 0}
-          height={220}
-          withVerticalLabels={true}
-          withHorizontalLabels={false}
-          withDots={true}
-          withInnerLines={true}
-          withOuterLines={true}
-          withVerticalLines={false}
-          withShadow={true}
-          bezier
-          decorator={() => {
-            return tooltipVisible ? (
-              <View
-                style={[
-                  styles.tooltip,
-                  {
-                    backgroundColor: "black",
-                    left: tooltipData.x - 40,
-                    top: tooltipData.y - 50,
-                  },
-                ]}
-              >
-                <Text style={styles.tooltipText}>${tooltipData.value}</Text>
-              </View>
-            ) : null;
-          }}
-          onDataPointClick={({ value, x, y, getColor }) => {
-            // Show tooltip with value
-            setTooltipData({ value, x, y });
-            setTooltipVisible(true);
-
-            // Hide tooltip after 3 seconds
-            setTimeout(() => {
-              setTooltipVisible(false);
-            }, 3000);
-          }}
-          chartConfig={{
-            backgroundColor: colors.bg,
-            backgroundGradientFrom: colors.bg,
-            backgroundGradientTo: colors.bg,
-            decimalPlaces: 0,
-            color: (opacity = 1) =>
-              `${color}${Math.round(opacity * 255)
-                .toString(16)
-                .padStart(2, "0")}`,
-            labelColor: () => colors.text,
-            style: {
-              borderRadius: 16,
+          color={color}
+          thickness={3}
+          spacing={48}
+          initialSpacing={10}
+          curved
+          xAxisLabelTextStyle={{ color: colors.text }}
+          dataPointsColor={color}
+          dataPointsRadius={5}
+          pointerConfig={{
+            pointerStripColor: color,
+            pointerColor: color,
+            radius: 5,
+            pointerLabelWidth: 100,
+            pointerLabelHeight: 40,
+            activatePointersOnLongPress: true,
+            autoAdjustPointerLabelPosition: true,
+            pointerLabelComponent: (items: any[]) => {
+              return (
+                <View
+                  style={{
+                    backgroundColor: colors.bg,
+                    paddingHorizontal: 14,
+                    paddingVertical: 10,
+                    borderRadius: 8,
+                    borderWidth: 1,
+                    borderColor: colors.border,
+                  }}
+                >
+                  <ThemedText className="font-bold">
+                    {items[0].value}
+                  </ThemedText>
+                </View>
+              );
             },
-            propsForDots: {
-              r: "4",
-              strokeWidth: "2",
-              stroke: color,
-            },
-            propsForBackgroundLines: {
-              strokeDasharray: "", // Solid grid lines
-              stroke: colors.text,
-              strokeOpacity: 0.1,
-            },
-          }}
-          style={{
-            marginVertical: 0,
-            marginHorizontal: 0,
-            paddingHorizontal: 0,
           }}
         />
       </View>
     </CustomCard>
   );
-
-  const styles = StyleSheet.create({
-    tooltip: {
-      position: "absolute",
-      backgroundColor: colors.bg,
-      borderRadius: 8,
-      color: "white",
-      padding: 8,
-      minWidth: 80,
-      alignItems: "center",
-      shadowColor: "#000",
-      shadowOffset: {
-        width: 0,
-        height: 2,
-      },
-      shadowOpacity: 0.25,
-      shadowRadius: 3.84,
-      elevation: 5,
-    },
-    tooltipText: {
-      color: "white",
-      fontWeight: "bold",
-    },
-  });
 
   return (
     <>
